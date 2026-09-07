@@ -1,0 +1,2160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>30-Day Gentle Reset • Lahari • Brain Dump</title>
+<style>
+:root{--bg:#f7f5ef;--card:#fff;--ink:#26302b;--muted:#6e7771;--accent:#657c68;--soft:#e7eee7;--line:#dfe4df;--warn:#9a7650}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+header{background:linear-gradient(135deg,#e5eee4,#f8f5ec);padding:28px 18px 20px;position:sticky;top:0;z-index:3;border-bottom:1px solid var(--line)}
+.wrap{max-width:1100px;margin:auto}.top{display:flex;justify-content:space-between;gap:15px;align-items:center}.title{font-size:27px;font-weight:800}.sub{color:var(--muted)}
+nav{display:flex;gap:7px;overflow:auto;margin-top:16px}nav button,.pill{border:1px solid var(--line);background:#fff;padding:8px 12px;border-radius:999px;cursor:pointer}
+nav button.active{background:var(--accent);color:white}
+/* Brain Dump + Priority Matrix polish */
+.task-transfer{display:flex;align-items:center;justify-content:flex-start;gap:12px;flex-wrap:wrap;margin-top:12px;padding:0;border:0;background:transparent;box-shadow:none}
+.task-transfer .transfer-count{display:none}
+.task-transfer .transfer-count .badge{display:none}
+.task-transfer .transfer-btn{font-size:13px;padding:8px 11px}
+.transfer-btn{box-shadow:0 4px 12px #0000000b}
+.matrix-header{background:linear-gradient(135deg,#f4f8f3,#fbfaf6);border-color:#dbe4db}
+.matrix-grid{margin-top:12px}
+.matrix-quadrant{position:relative;overflow:hidden}
+.matrix-quadrant:before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--accent);opacity:.55}
+.matrix-quadrant h4{margin:2px 0 10px;font-size:16px}
+.matrix-meta{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:8px 0 2px}
+.matrix-empty{padding:12px;border:1px dashed var(--line);border-radius:10px;background:#fafbf9}
+main{padding:22px 14px 60px}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:17px;box-shadow:0 3px 15px #00000006}.span12{grid-column:span 12}.span8{grid-column:span 8}.span6{grid-column:span 6}.span4{grid-column:span 4}
+h2,h3{margin:0 0 10px}.small{font-size:13px;color:var(--muted)}.hero{display:flex;justify-content:space-between;align-items:center;gap:20px}.score{font-size:40px;font-weight:800}.progress{height:10px;background:#edf0ec;border-radius:99px;overflow:hidden}.bar{height:100%;background:var(--accent);width:0}
+.check{display:flex;gap:9px;align-items:flex-start;padding:8px 0;border-bottom:1px solid #f0f1ef}.check:last-child{border:0}.check input{margin-top:4px;accent-color:var(--accent)}
+.daygrid{display:grid;grid-template-columns:repeat(10,1fr);gap:6px}.day{padding:8px 2px;border:1px solid var(--line);border-radius:9px;background:#fff;cursor:pointer;text-align:center}.day.selected{outline:2px solid var(--accent)}.day.done{background:var(--soft)}
+.badge{display:inline-block;padding:3px 8px;border-radius:99px;background:var(--soft);font-size:12px}.timer{font-size:28px;font-weight:800}.row{display:flex;gap:8px;flex-wrap:wrap}.btn{border:0;background:var(--accent);color:white;padding:9px 13px;border-radius:10px;cursor:pointer}.btn.secondary{background:#eef1ed;color:var(--ink)}
+.meal{display:grid;grid-template-columns:1fr auto;gap:10px;padding:9px 0;border-bottom:1px solid #eee}.foodgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.food{border:1px solid var(--line);padding:9px;border-radius:11px;cursor:pointer}.food input{margin-right:6px;accent-color:var(--accent)}
+textarea,input[type=text]{width:100%;border:1px solid var(--line);border-radius:10px;padding:9px;background:#fff}textarea{min-height:80px}
+.quote{font-size:18px;font-weight:700}.alert{background:#fbf5e9;border-left:4px solid #b48a51;padding:11px;border-radius:8px}
+@media(max-width:800px){.span8,.span6,.span4{grid-column:span 12}.daygrid{grid-template-columns:repeat(6,1fr)}.hero{display:block}}
+
+.business-kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:9px;margin-top:10px}
+.business-kpi{border:1px solid var(--line);border-radius:12px;padding:10px;background:#fafbf9}
+.business-kpi b{display:block;font-size:23px}
+.business-kpi span{font-size:12px;color:var(--muted)}
+.business-day{border:1px solid var(--line);border-radius:15px;margin:10px 0;background:#fff;overflow:hidden}
+.business-day summary{cursor:pointer;list-style:none;padding:13px 15px;display:flex;align-items:center;gap:10px}
+.business-day summary::-webkit-details-marker{display:none}
+.business-day summary:before{content:"＋";font-weight:800;color:var(--accent)}
+.business-day[open] summary:before{content:"−"}
+.business-day.done summary{background:var(--soft)}
+.business-day .bd-body{padding:0 15px 15px}
+.business-meta{margin-left:auto;display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.business-progress{height:7px;background:#edf0ec;border-radius:99px;overflow:hidden;margin:5px 0 10px}
+.business-progress .bar{height:100%;background:var(--accent)}
+.business-checkgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:0 16px}
+.business-checkgrid .check{min-height:38px}
+.business-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+.business-metrics input{min-width:0}
+.status-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}
+.status-row button{font-size:12px}
+.followup-row{display:grid;grid-template-columns:1.2fr .9fr .9fr 1fr auto;gap:7px;align-items:center;margin:7px 0}
+.food .btn.secondary{border:0;line-height:1}.pipeline-table{width:100%;border-collapse:collapse;font-size:13px}
+.pipeline-table th,.pipeline-table td{padding:7px;border-bottom:1px solid var(--line);text-align:left}
+@media(max-width:800px){.business-kpis{grid-template-columns:repeat(2,1fr)}.business-checkgrid,.business-metrics{grid-template-columns:1fr}.followup-row{grid-template-columns:1fr 1fr}.business-meta{margin-left:0}}
+
+/* Food Choices layout */
+.food-choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:14px}
+.food-choice-section{background:#fbfcfa;border:1px solid var(--line);border-radius:14px;padding:15px}
+.food-choice-section h4{margin:0 0 10px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.food-choice-items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.food-choice-item{display:flex;align-items:flex-start;gap:8px;padding:9px 10px;border:1px solid #e8ece8;border-radius:10px;background:#fff;min-height:42px}
+.food-choice-item input{margin-top:3px;flex:0 0 auto;accent-color:var(--accent)}
+.food-choice-item span{line-height:1.35}
+.food-choice-intro{margin-bottom:2px}
+@media(max-width:800px){.food-choice-grid{grid-template-columns:1fr}.food-choice-items{grid-template-columns:1fr}}
+
+/* Manage added items — compact single-line rows */
+.custom-item-list{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+.custom-item-row{display:grid;grid-template-columns:auto minmax(0,1fr) minmax(180px,260px);gap:10px;align-items:center;padding:9px 11px;border-bottom:1px solid #eef0ed}
+.custom-item-row:last-child{border-bottom:0}
+.custom-item-row:hover{background:#fafbf9}
+.custom-item-row input[type=checkbox]{margin:0;accent-color:var(--accent)}
+.custom-item-name{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:650}
+.custom-item-row select{width:100%;min-width:0;margin:0}
+@media(max-width:650px){.custom-item-row{grid-template-columns:auto minmax(0,1fr);gap:8px}.custom-item-row select{grid-column:2}}
+
+/* Shopping list: category header + drag/drop + move-to dropdown */
+.cat-header{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
+.cat-header h4{margin:0;padding:0;border:0}
+.cat-edit-btn{padding:4px 10px;font-size:12px;white-space:nowrap}
+.cat-drop{transition:background .12s,outline .12s}
+.cat-drop.drag-over{outline:2px dashed var(--accent);outline-offset:-2px;background:#f3f8f2}
+.shop-item-row{cursor:grab}
+.shop-item-row:active{cursor:grabbing}
+.shop-item-row .drag-handle{color:var(--muted);margin-right:2px}
+.buy-summary-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 14px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+.buy-summary-grid .custom-item-row{border-bottom:1px solid #eef0ed}
+@media(max-width:650px){.buy-summary-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<div class="top"><div><div class="title">🌿 30-Day Gentle Reset</div><div class="sub">Rest → regulate → move → build momentum. Movement + weight-loss exercises in one place.</div><div class="small" id="lastSavedLabel" style="margin-top:4px">Not saved yet</div></div>
+<div class="row" style="align-items:center">
+<button class="btn" id="saveBtn" onclick="manualSave()">💾 Save</button>
+<button class="btn secondary" onclick="exportBackup()" title="Download a backup file you can open on another device">⬇️ Export</button>
+<button class="btn secondary" onclick="triggerImport()" title="Load a backup file exported from another device">⬆️ Import</button>
+<input type="file" id="importFile" accept="application/json" style="display:none" onchange="importBackup(event)">
+<button class="btn secondary" onclick="resetAll()">Reset tracker</button>
+</div></div>
+<nav id="tabs"></nav>
+</div></header>
+<main class="wrap"><div id="app"></div></main>
+<div id="syncStatus" style="position:fixed;bottom:10px;right:12px;font-size:11px;color:#6e7771;background:#fff;border:1px solid #dfe4df;padding:5px 10px;border-radius:99px;z-index:5;box-shadow:0 2px 8px #00000010;cursor:pointer" onclick="changeProfileId()" title="Click to change tracker name">☁️ connecting…</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script>
+const days=[
+["Land softly","10–15 min easy walk","5 min","Breathing + mobility","Choose simple meals; 6–8 glasses","One business priority only"],
+["Routine before intensity","15 min walk","6 min","Neck/shoulder/hip mobility","Protein at breakfast","20-min job-search block"],
+["Reduce friction","15–20 min walk","6 min","Gentle yoga","Vegetables at 2 meals","20-min startup block"],
+["Build consistency","20 min walk","7 min","Yoga: cat-cow + child's pose","Water before each meal","30-min focused work"],
+["Energy without exhaustion","20 min walk","7 min","Mobility flow","Balanced lunch","30-min startup/job block"],
+["Active recovery","15 min easy walk","8 min","Stretch only","Cook one simple meal","Light admin only"],
+["Review, don't punish","20 min easy walk","8 min","Long gentle stretch","Plan groceries","Weekly review"],
+["Slightly stronger","20–25 min walk","8 min","Yoga + mobility","Protein + fibre each meal","30-min business sprint"],
+["Introduce strength","25 min walk + 1 set each: sit-to-stand, wall push","8 min","Mobility","Whole-food meals","30-min job applications"],
+["Strength foundation","25 min + 2 sets sit-to-stand/wall push/glute bridge","8 min","Yoga","Minimise ultra-processed foods","40-min focused block"],
+["Steady state","25–30 min walk + 2 sets","9 min","Mobility","Simple repeatable meals","40-min startup"],
+["Active recovery","20 min easy","10 min","Stretch","Hydration + regular meals","Low-demand day"],
+["Progress gently","30 min walk + 2 sets","10 min","Yoga","Meal prep 2 proteins/veg","45-min career block"],
+["Build capacity","30 min + 2–3 sets","10 min","Mobility","Protein each meal","45-min startup"],
+["Halfway review","20–30 min easy","10 min","Recovery yoga","Check portions, hunger, energy","Review metrics"],
+["Strength + walk","30 min + 3 sets","10 min","Mobility","Fibre-rich foods","45-min focused block"],
+["Controlled challenge","30–35 min + 3 sets","10 min","Yoga","Balanced plate","45-min job block"],
+["Active recovery","20 min easy","10 min","Stretch","Cook at home","Admin only"],
+["Strength + walk","35 min + 3 sets","10 min","Mobility","Repeat best meals","60-min startup"],
+["Deload + reflect","20 min easy","10 min","Breathing","Eat to comfortable fullness","Weekly review"],
+["Build endurance","35 min + 3 sets","10 min","Yoga","Protein + colourful veg","60-min career block"],
+["Strength progression","35–40 min + 3 sets","10 min","Mobility","Whole-food snack","60-min startup"],
+["Recovery","20–25 min easy","10 min","Stretch","Hydrate + regular meals","Low-demand day"],
+["Strong routine","40 min + 3 sets","10 min","Yoga","Plan tomorrow's food","60-min deep work"],
+["Strength + walk","40 min + 3 sets","10 min","Mobility","Balanced meals","60-min job/business"],
+["Easy day","20 min","10 min","Recovery","Simple foods","Weekly reset"],
+["Personal best = consistency","40 min + 3 sets","10 min","Yoga","Choose sustainable portions","60-min deep work"],
+["Integrate","40 min + 3 sets","10 min","Mobility","Keep your 5 best meals","60-min focused work"],
+["Your next 30 days","Choose sustainable level","10 min","Favourite gentle practice","Make a repeatable food system","Write your next plan"]
+];
+const quotes=[
+"Slow is still forward.","Your job today is consistency, not perfection.","Protect your energy; spend it on what matters.","A calm plan beats a heroic burst.","You do not need to finish everything today.","Small actions compound.","Rest is part of the plan.","Make the next choice easier.","Discipline can be gentle.","Build a life your nervous system can actually live in."
+];
+const meals={
+"Breakfast":["Oats + Greek/plain yoghurt + berries/banana","Eggs + wholegrain toast + vegetables","Vegetable omelette + fruit","Plain yoghurt + fruit + nuts/seeds","Upma/poha + vegetables + protein","Besan/moong dal chilla + chutney","Idli/dosa + sambar + vegetables","Peanut butter + banana on wholegrain toast","Sprouts salad + boiled egg","Smoothie: milk/yoghurt + banana + oats + nuts","Paneer bhurji + roti","Overnight oats + chia + fruit","Plain dosa","Masala dosa","Pesarattu (moong dal dosa)","Adai dosa","Ragi dosa","Oats dosa","Vegetable uttapam","Rava dosa","Neer dosa","Appam + vegetable stew","Paniyaram / kuzhi paniyaram","— Weight-loss pick: Egg white omelette + spinach","— Weight-loss pick: Moong dal cheela, no oil, + mint chutney","— Weight-loss pick: Steamed idli (2) + sambar, skip coconut chutney","— Weight-loss pick: Green smoothie — spinach + cucumber + apple + chia","— Weight-loss pick: Cottage cheese/paneer + cucumber + tomato salad"],
+"Lunch":["Rice + dal + vegetables + yoghurt","Roti + chicken/tofu/paneer + salad","Grain bowl + beans/lentils + vegetables","Fish/chicken + rice + vegetables","Khichdi + vegetables + yoghurt","Rajma/chole + rice + salad","Curd rice + vegetable sabzi","Roti + egg curry + vegetables","Quinoa bowl + chickpeas + vegetables","Fried rice (light oil) + tofu/chicken + vegetables","Multigrain roti + paneer/soya + salad","Sambar rice + vegetable poriyal","Rasam rice + vegetable poriyal","Lemon rice + egg / dal + vegetables","Tomato rice + egg / paneer + vegetables","Keerai dal + rice","Keerai kootu + rice","Avial + rice","Vegetable kootu + rice","Mor kuzhambu + vegetables + rice","Vegetable biryani + raita","Egg curry + rice / dosa","Paneer curry + rice / roti","Tofu vegetable curry + rice","— Weight-loss pick: Large salad bowl + grilled chicken/paneer + lemon dressing (no starch)","— Weight-loss pick: Small brown rice portion + dal + double vegetables","— Weight-loss pick: Millet (ragi/jowar) roti + sabzi + salad","— Weight-loss pick: Soup + salad + boiled egg (light lunch)"],
+"Dinner":["Vegetable soup + protein + wholegrain side","Dal + vegetables + small rice/roti portion","Stir-fry vegetables + tofu/chicken + rice","Egg/bean curry + vegetables + roti","Leftover balanced lunch portion","Grilled fish/chicken + steamed vegetables","Moong dal khichdi + curd","Vegetable + paneer stir-fry + 1 roti","Clear soup + salad + boiled egg","Light upma/poha + vegetables (early dinner)","— Weight-loss pick: Vegetable clear soup + grilled protein only (very light)","— Weight-loss pick: Cauliflower rice stir-fry + tofu/chicken","— Weight-loss pick: Egg white bhurji + sautéed greens","— Weight-loss pick: Large salad + paneer/tofu, skip rice/roti","— Weight-loss pick: Light millet khichdi + curd"],
+"Snacks":["Fruit","Plain yoghurt","Small handful of nuts","Boiled eggs","Vegetable sticks + hummus","Roasted chana","Makhana (roasted fox nuts)","Sprouts chaat","Buttermilk (chaas)","Rice cakes + peanut butter","Dark chocolate square + nuts (small)","— Weight-loss pick: Cucumber + carrot sticks + hummus (small portion)","— Weight-loss pick: Air-fried roasted chickpeas","— Weight-loss pick: Boiled sweet corn (small bowl)","— Weight-loss pick: Green/herbal tea, no sugar","— Weight-loss pick: 1 boiled egg + black pepper","— Weight-loss pick: Watermelon or muskmelon cubes"]
+};
+const digestiveDrinksByWeekday=[
+ {day:"Monday",name:"Jeera (cumin) water",benefit:"Aids digestion, eases bloating"},
+ {day:"Tuesday",name:"Ajwain (carom seed) water",benefit:"Anti-inflammatory, relieves gas"},
+ {day:"Wednesday",name:"Saunf (fennel) water",benefit:"Soothes stomach, freshens breath"},
+ {day:"Thursday",name:"Coriander seed water",benefit:"Supports digestion, cooling effect"},
+ {day:"Friday",name:"Pudina (mint) water",benefit:"Calms bloating, aids digestion"},
+ {day:"Saturday",name:"Ginger water",benefit:"Warms digestion, reduces nausea"},
+ {day:"Sunday",name:"Cinnamon water",benefit:"Mild anti-inflammatory, balances blood sugar"}
+];
+const southIndianDishes={
+  "Protein & Vegetable Sides":["Egg podimas","Egg bhurji with curry leaves","Boiled egg + vegetable poriyal","Chana sundal","Green gram sundal","Peanut sundal","Sprouts sundal","Paneer pepper fry","Tofu pepper fry","Beans poriyal","Cabbage poriyal","Carrot beans poriyal","Beetroot poriyal","Okra poriyal","Gobi poriyal","Mixed vegetable poriyal","— Weight-loss pick: Grilled fish tawa fry (light oil)","— Weight-loss pick: Steamed soya chunks curry","— Weight-loss pick: Sprouts + cucumber salad","— Weight-loss pick: Raw beetroot + carrot salad"],
+  "Chutneys & Accompaniments":["Coconut chutney","Tomato chutney","Onion-tomato chutney","Mint chutney","Coriander chutney","Peanut chutney","Ginger chutney","Sambar","Rasam","Curd / thayir","Buttermilk / mor"]
+};
+
+const weightLossPicks=["Egg white omelette + spinach, no oil","Grilled chicken/fish + large salad, no starch","Paneer/tofu stir-fry + double vegetables, skip rice","Moong dal cheela (no oil) + mint chutney","Vegetable clear soup as a full light meal","Greek yoghurt + cinnamon, no added sugar","Cauliflower rice stir-fry instead of rice","Millet (ragi/jowar) roti + sabzi + salad","Sprouts + cucumber + lemon salad","Roasted chana or makhana (small bowl, not fried)","Air-fried snacks instead of deep-fried","Herbal/green tea, no sugar","Boiled egg + black pepper (protein-only snack)","Watermelon or muskmelon cubes (low-cal fruit)","Buttermilk (chaas) instead of a sugary drink","Zucchini/vegetable noodles + chicken or tofu mince"];
+const shoppingCatalog={
+"Vegetables":["Spinach","Tomato","Onion","Carrot","Beans","Capsicum","Cabbage","Cucumber","Broccoli","Sweet potato","Garlic","Ginger","Peas","Cauliflower","Beetroot","Zucchini","Mushroom","Pumpkin","Bottle gourd","Okra (bhindi)","Green chilli","Coriander leaves","Curry leaves"],
+"Fruits":["Banana","Apple","Berries","Orange","Papaya","Lemon","Grapes","Pomegranate","Mango","Watermelon","Pineapple","Guava"],
+"Protein":["Eggs","Chicken","Fish","Prawns","Tofu","Paneer","Lentils/Dal","Chickpeas","Rajma","Black beans","Soya chunks","Peanuts","Greek/plain yoghurt"],
+"Grains & Carbs":["Rice","Brown rice","Oats","Wholegrain bread","Wheat flour (atta)","Multigrain flour","Quinoa","Poha","Rava/semolina","Millets (ragi/jowar)","Barley","Vermicelli","Pasta"],
+"Dairy":["Milk","Plain yoghurt","Butter/ghee","Buttermilk","Cheese","Cream"],
+"Pantry & spices":["Nuts/seeds","Olive oil / cooking oil","Cumin (jeera)","Ajwain","Fennel seeds (saunf)","Coriander seeds","Cinnamon","Turmeric","Red chilli powder","Garam masala","Mustard seeds","Salt","Sugar/jaggery","Vinegar","Soy sauce","Baking powder","Cornflour","Honey","Chana (roasted)","Makhana"],
+"Frozen & bakery":["Bread","Frozen peas","Frozen mixed vegetables","Frozen paratha"],
+"Beverages & extras":["Green tea","Coffee","Herbal tea","Coconut water"]
+};
+let state={};
+// Master list of pages/nav tabs: [internal key, display label]. Dashboard is always
+// forced on; the rest are toggleable per-profile via the ⚙️ page picker in the nav.
+const ALL_TABS=[["Dashboard","Dashboard"],["Today","Today"],["Movement","Movement"],["Care","Care"],["Brain Dump","Brain Dump"],["Focus","Focus"],["My Journal","My Journal"],["Food","Food"],["Preparation","Grocery"]];
+function dataKey(){return "reset30_data_"+profileId;}
+function ensureStateDefaults(){
+  state.day=state.day||1; state.done=state.done||{}; state.water=state.water||{}; state.food=state.food||{}; state.notes=state.notes||{}; state.pantry=state.pantry||{}; state.shopping=state.shopping||{}; state.incomeLog=state.incomeLog||[]; state.milestones=state.milestones||{}; state.customItems=state.customItems||[]; state.customCategories=state.customCategories||[]; if(!state.customCategories.includes("My items"))state.customCategories.unshift("My items"); state.selectedCustomItems=state.selectedCustomItems||{}; state.itemCategories=state.itemCategories||{}; state.southDishes=state.southDishes||{}; state.recipeLog=state.recipeLog||{}; state.bodyProfile=state.bodyProfile||{}; state.brainDump=state.brainDump||[]; state.matrix=state.matrix||{urgentImportant:[],importantNotUrgent:[],urgentNotImportant:[],neither:[]}; state.choreList=state.choreList||["Bathroom quick clean","Dust & wipe surfaces","Sweep / mop floors","Declutter one area","Kitchen deep-clean (fridge/stove wipe)","Laundry","Change bedsheets + bins out"]; state.enabledTabs=state.enabledTabs||ALL_TABS.map(x=>x[0]);
+}
+function loadLocalState(){
+  state=JSON.parse(localStorage.getItem(dataKey())||"{}");
+  ensureStateDefaults();
+}
+
+// ---- Cloud sync (Firebase Realtime Database) ----
+const firebaseConfig = {
+  apiKey: "AIzaSyA8PsNjdoarbCCNP0iCJhek539IoTvcHgM",
+  authDomain: "adhd-planner-11eed.firebaseapp.com",
+  databaseURL: "https://adhd-planner-11eed-default-rtdb.firebaseio.com",
+  projectId: "adhd-planner-11eed",
+  storageBucket: "adhd-planner-11eed.firebasestorage.app",
+  messagingSenderId: "1047752512506",
+  appId: "1:1047752512506:web:ccfb5a9a5ac192cd410a43"
+};
+// Everyone who opens this file shares the same Firebase project, so each person
+// needs their own cloud "folder" (profile) or their data would mix together.
+// If this device already has a remembered profile we skip straight in; otherwise
+// we show a list of existing profiles to pick from (or let you create a new one),
+// and ask for a passcode if that profile has one set — so a reset in one login
+// never touches anyone else's tracker.
+const GUEST_ID="guest"; // singleton guest profile — never randomly generated, always pinned to top of the picker
+function sanitizeProfileId(v){
+  return (v||"").trim().toLowerCase().replace(/[^a-z0-9-_]+/g,"-").replace(/^-+|-+$/g,"").slice(0,40);
+}
+function hashPasscode(p){
+  const s=String(p||""); let h=0;
+  for(let i=0;i<s.length;i++){h=(h*31+s.charCodeAt(i))>>>0;}
+  return h.toString(36);
+}
+async function fetchExistingProfiles(){
+  // Union of the metadata node AND the actual data node — a profile with saved
+  // data but no passcode-metadata entry (e.g. created before that concept existed)
+  // must still show up, or it becomes invisible/unopenable and risks being
+  // silently overwritten by someone creating a "new" profile with the same name.
+  try{
+    const [profSnap,stateSnap]=await Promise.all([
+      firebase.database().ref("adhdPlannerProfiles").once("value"),
+      firebase.database().ref("adhdPlannerState").once("value")
+    ]);
+    const a=Object.keys(profSnap.val()||{});
+    const b=Object.keys(stateSnap.val()||{});
+    return Array.from(new Set([...a,...b]));
+  }catch(e){return [];}
+}
+async function fetchProfileMeta(id){
+  try{
+    const snap=await firebase.database().ref("adhdPlannerProfiles/"+id).once("value");
+    return snap.val();
+  }catch(e){return null;}
+}
+async function verifyOrSetPasscode(id){
+  if(id===GUEST_ID)return true; // shared guest profile is never passcode-protected
+  const meta=await fetchProfileMeta(id);
+  if(meta && meta.passcodeHash){
+    for(let tries=0;tries<3;tries++){
+      const entered=window.prompt("Enter the passcode for \""+id+"\":","");
+      if(entered===null)return false;
+      if(hashPasscode(entered)===meta.passcodeHash)return true;
+      alert("Incorrect passcode.");
+    }
+    return false;
+  }
+  // No passcode set yet for this profile — offer to set one now (optional).
+  const p1=window.prompt("Set a passcode for \""+id+"\" so it's protected next time (used only when someone chooses this tracker from the list). Leave blank to skip:","");
+  if(p1){
+    try{await firebase.database().ref("adhdPlannerProfiles/"+id).set({passcodeHash:hashPasscode(p1)});}catch(e){}
+  } else if(!meta){
+    try{await firebase.database().ref("adhdPlannerProfiles/"+id).set({passcodeHash:null});}catch(e){}
+  }
+  return true;
+}
+// Deleting a profile always requires its passcode. If none is set yet, one must be
+// created (and re-typed to confirm) as the deletion gate — this is the deliberate
+// "passcode must be added to delete" safety rail.
+async function requirePasscodeToDelete(id){
+  if(id===GUEST_ID){alert("The Guest profile is shared and can't be deleted.");return false;}
+  const meta=await fetchProfileMeta(id);
+  if(meta && meta.passcodeHash){
+    for(let tries=0;tries<3;tries++){
+      const entered=window.prompt("Deleting \""+id+"\" permanently removes its saved data.\n\nEnter its passcode to confirm:","");
+      if(entered===null)return false;
+      if(hashPasscode(entered)===meta.passcodeHash)return true;
+      alert("Incorrect passcode.");
+    }
+    return false;
+  }
+  const p1=window.prompt("\""+id+"\" has no passcode set yet. Set one now and re-enter it to confirm you want to permanently delete it:","");
+  if(!p1)return false;
+  const p2=window.prompt("Re-enter the passcode to confirm deleting \""+id+"\":","");
+  if(p1!==p2){alert("Passcodes didn't match — deletion cancelled.");return false;}
+  return true;
+}
+async function deleteProfile(id){
+  const ok=await requirePasscodeToDelete(id);
+  if(!ok)return false;
+  const isSelf=(id===profileId);
+  // Deleting the profile that's currently live-syncing in THIS session needs its
+  // listener detached first — otherwise the listener sees the removal as "cloud is
+  // empty" and immediately re-pushes the local copy back up, resurrecting it.
+  if(isSelf && stateRef){ try{stateRef.off();}catch(e){} }
+  try{
+    await firebase.database().ref("adhdPlannerState/"+id).remove();
+    await firebase.database().ref("adhdPlannerProfiles/"+id).remove();
+  }catch(e){
+    alert("Couldn't reach the shared dashboard to delete that profile right now. Try again once you're online.");
+    return false;
+  }
+  if(isSelf){
+    localStorage.removeItem("reset30_profileId");
+    localStorage.removeItem(dataKey());
+  }
+  alert("\""+id+"\" was deleted.");
+  if(isSelf){
+    sessionStorage.removeItem("reset30_skipPickerOnce");
+    location.reload(); // this session was using the profile we just removed — start clean
+  }
+  return true;
+}
+// Nuclear option: wipe every profile except Guest. Gated by a master passcode
+// (hashed with the same helper used for per-profile passcodes) instead of a typed
+// phrase — this is the deliberate "are you sure" step for a whole-dashboard wipe.
+const MASTER_DELETE_ALL_HASH="b0axxf";
+async function deleteAllProfiles(ids){
+  if(!ids.length){alert("There are no other profiles to delete.");return false;}
+  for(let tries=0;tries<3;tries++){
+    const entered=window.prompt("This permanently deletes ALL "+ids.length+" profile(s) and their saved data from this shared dashboard. Guest is not affected.\n\nEnter the master passcode to confirm:","");
+    if(entered===null)return false;
+    if(hashPasscode(entered)===MASTER_DELETE_ALL_HASH)break;
+    if(tries===2){alert("Incorrect passcode. Nothing was deleted.");return false;}
+    alert("Incorrect passcode.");
+  }
+  const includesSelf=ids.includes(profileId);
+  if(includesSelf && stateRef){ try{stateRef.off();}catch(e){} } // same resurrection risk as deleteProfile — see there
+  for(const id of ids){
+    try{
+      await firebase.database().ref("adhdPlannerState/"+id).remove();
+      await firebase.database().ref("adhdPlannerProfiles/"+id).remove();
+    }catch(e){console.error("Failed to delete profile "+id,e);}
+  }
+  clearDeviceMemory();
+  alert("All profiles were deleted. Guest is still available.");
+  if(includesSelf){
+    sessionStorage.removeItem("reset30_skipPickerOnce");
+    location.reload();
+  }
+  return true;
+}
+function injectProfilePickerStyles(){
+  if(document.getElementById("profilePickerStyles"))return;
+  const style=document.createElement("style");
+  style.id="profilePickerStyles";
+  style.textContent=`
+#profilePickerOverlay{position:fixed;inset:0;background:rgba(38,48,43,.55);display:flex;align-items:center;justify-content:center;z-index:999;padding:20px}
+#profilePickerCard{background:#fff;border-radius:20px;max-width:440px;width:100%;max-height:86vh;display:flex;flex-direction:column;box-shadow:0 20px 60px #00000030;overflow:hidden}
+#profilePickerCard .ppHead{background:linear-gradient(135deg,#e5eee4,#f8f5ec);padding:20px 20px 16px;border-bottom:1px solid #dfe4df}
+#profilePickerCard .ppHead h2{margin:0 0 4px;font-size:20px}
+#profilePickerCard .ppHead p{margin:0;font-size:13px;color:#6e7771}
+#ppSearch{width:100%;box-sizing:border-box;border:1px solid #dfe4df;border-radius:10px;padding:9px 12px;margin-top:12px;font-size:14px}
+#ppList{overflow-y:auto;padding:10px 12px;flex:1;min-height:80px}
+.pp-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 12px;border-radius:12px;cursor:pointer;margin-bottom:4px;border:1px solid transparent;transition:background .12s}
+.pp-row:hover,.pp-row:focus-within{background:#f2f5f1;border-color:#dfe4df}
+.pp-row.pp-guest{background:#eef1ed;font-weight:700;margin-bottom:8px}
+.pp-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
+.pp-actions{display:flex;gap:6px;flex-shrink:0;opacity:.85}
+.pp-row:hover .pp-actions,.pp-row:focus-within .pp-actions{opacity:1}
+.pp-actions button{background:#fff;border:1px solid #dfe4df;border-radius:8px;padding:5px 10px;font-size:12px;cursor:pointer}
+.pp-actions button.pp-del{color:#b23b3b;border-color:#f0dada}
+.pp-actions button:hover{filter:brightness(.96)}
+.pp-empty,.pp-more{padding:14px;text-align:center;color:#6e7771;font-size:13px}
+#ppDanger{padding:2px 12px 8px;text-align:right}
+#ppDanger button{background:none;border:0;color:#b23b3b;font-size:12px;cursor:pointer;text-decoration:underline;padding:0}
+#ppNewRow{padding:10px 12px;border-top:1px solid #eef0ed}
+#ppNewRow .row{gap:8px;flex-wrap:nowrap}
+#ppNewRow input{flex:1;min-width:0}
+#ppFooter{padding:12px 20px 18px;border-top:1px solid #eef0ed;display:flex;flex-direction:column;gap:8px}
+#ppFooter .ppFooterBtns{display:flex;justify-content:flex-end;gap:8px}
+#ppStartFresh{background:none;border:0;color:#9a7650;font-size:12px;cursor:pointer;text-decoration:underline;padding:0;align-self:flex-start}
+`;
+  document.head.appendChild(style);
+}
+function clearDeviceMemory(){
+  Object.keys(localStorage).filter(k=>k.startsWith("reset30_")).forEach(k=>localStorage.removeItem(k));
+}
+// opts.currentId: the profile this device currently remembers (if any).
+// opts.mode: "startup" (shown when the app loads — offers Continue/Start fresh)
+//            or "switch" (shown from the ☁️ status pill mid-session — offers Cancel).
+function showProfilePicker(opts){
+  opts=opts||{};
+  let currentId=opts.currentId||null;
+  const mode=opts.mode||"switch";
+  injectProfilePickerStyles();
+  return new Promise((resolve)=>{
+    const overlay=document.createElement("div");
+    overlay.id="profilePickerOverlay";
+    overlay.innerHTML='<div id="profilePickerCard">'
+      +'<div class="ppHead"><h2>🌿 Choose your tracker</h2><p>Pick your profile, or create a new one. This keeps everyone\'s data separate on this shared dashboard.</p>'
+      +'<input type="text" id="ppSearch" placeholder="Search profiles…" autocomplete="off"></div>'
+      +'<div id="ppList"><div class="pp-empty">Loading profiles…</div></div>'
+      +'<div id="ppDanger"></div>'
+      +'<div id="ppNewRow"><div class="row"><input type="text" id="ppNewName" placeholder="New profile name"><button class="btn" id="ppCreateBtn">+ Create</button></div></div>'
+      +'<div id="ppFooter"></div>'
+      +'</div>';
+    document.body.appendChild(overlay);
+
+    function cleanup(){overlay.remove();}
+
+    function renderFooter(){
+      const footer=overlay.querySelector("#ppFooter");
+      footer.innerHTML="";
+      if(mode==="startup" && currentId){
+        const startFreshBtn=document.createElement("button");
+        startFreshBtn.id="ppStartFresh";
+        startFreshBtn.type="button";
+        startFreshBtn.textContent="Start fresh on this device (forget "+currentId+")";
+        startFreshBtn.onclick=()=>{
+          if(!confirm("Forget \""+currentId+"\" on this device and its local cache?\n\nThis does NOT delete the profile from the shared dashboard — you (or anyone) can still open it again from this list.")) return;
+          clearDeviceMemory();
+          currentId=null;
+          renderFooter();
+          alert("This device has been reset. Pick a profile below to continue.");
+        };
+        footer.appendChild(startFreshBtn);
+
+        const btnRow=document.createElement("div");
+        btnRow.className="ppFooterBtns";
+        const continueBtn=document.createElement("button");
+        continueBtn.className="btn";
+        continueBtn.textContent="Continue as "+(currentId===GUEST_ID?"Guest":currentId);
+        continueBtn.onclick=()=>{cleanup();resolve(currentId);};
+        btnRow.appendChild(continueBtn);
+        footer.appendChild(btnRow);
+      } else if(mode==="switch"){
+        const btnRow=document.createElement("div");
+        btnRow.className="ppFooterBtns";
+        const cancelBtn=document.createElement("button");
+        cancelBtn.className="btn secondary";
+        cancelBtn.textContent="Cancel";
+        cancelBtn.onclick=()=>{cleanup();resolve(null);};
+        btnRow.appendChild(cancelBtn);
+        footer.appendChild(btnRow);
+      }
+    }
+    renderFooter();
+
+    let allProfiles=[];
+
+    function buildRow(id,isGuest){
+      const row=document.createElement("div");
+      row.className="pp-row"+(isGuest?" pp-guest":"");
+      row.innerHTML='<div class="pp-name">'+(isGuest?"👤 Guest":escapeHtml(id))+'</div>'
+        +'<div class="pp-actions"><button class="pp-open" type="button">Open</button>'
+        +(isGuest?"":'<button class="pp-del" type="button">Delete</button>')
+        +'</div>';
+      row.addEventListener("click",(e)=>{ if(e.target.closest(".pp-del"))return; pick(id); });
+      const delBtn=row.querySelector(".pp-del");
+      if(delBtn){
+        delBtn.addEventListener("click",async (e)=>{
+          e.stopPropagation();
+          if(!confirm("Delete profile \""+id+"\"? This permanently removes its saved data."))return;
+          const ok=await deleteProfile(id);
+          if(ok){ allProfiles=allProfiles.filter(n=>n!==id); renderList(); }
+        });
+      }
+      return row;
+    }
+
+    function renderList(){
+      const q=(overlay.querySelector("#ppSearch").value||"").trim().toLowerCase();
+      const filtered=q?allProfiles.filter(n=>n.toLowerCase().includes(q)):allProfiles.slice();
+      const shown=filtered.slice(0,10);
+      const listEl=overlay.querySelector("#ppList");
+      listEl.innerHTML="";
+      if(!q||GUEST_ID.includes(q)) listEl.appendChild(buildRow(GUEST_ID,true));
+      shown.forEach(id=>listEl.appendChild(buildRow(id,false)));
+      if(!shown.length && !(!q||GUEST_ID.includes(q))){
+        const empty=document.createElement("div");
+        empty.className="pp-empty";
+        empty.textContent="No profiles match \""+q+"\".";
+        listEl.appendChild(empty);
+      }
+      if(filtered.length>10){
+        const more=document.createElement("div");
+        more.className="pp-more";
+        more.textContent=(filtered.length-10)+" more — refine your search to find them.";
+        listEl.appendChild(more);
+      }
+      renderDanger();
+    }
+
+    function renderDanger(){
+      const dz=overlay.querySelector("#ppDanger");
+      dz.innerHTML="";
+      if(!allProfiles.length)return;
+      const btn=document.createElement("button");
+      btn.type="button";
+      btn.textContent="Delete ALL profiles ("+allProfiles.length+")";
+      btn.onclick=async ()=>{
+        const ok=await deleteAllProfiles(allProfiles.slice());
+        if(ok){
+          allProfiles=[];
+          if(currentId && currentId!==GUEST_ID)currentId=null;
+          renderFooter();
+          renderList();
+        }
+      };
+      dz.appendChild(btn);
+    }
+
+    async function pick(id){
+      const ok=await verifyOrSetPasscode(id);
+      if(!ok){alert("Couldn't verify passcode — pick a profile again.");return;}
+      cleanup();
+      resolve(id);
+    }
+
+    overlay.querySelector("#ppSearch").addEventListener("input",renderList);
+    overlay.querySelector("#ppCreateBtn").addEventListener("click",()=>{
+      const raw=overlay.querySelector("#ppNewName").value;
+      const id=sanitizeProfileId(raw);
+      if(!id){alert("Enter a name for your new profile.");return;}
+      if(id===GUEST_ID){alert("\"guest\" is reserved for the shared Guest profile. Pick another name.");return;}
+      if(allProfiles.includes(id)){alert("That profile already exists — pick it from the list instead, or choose a different name.");return;}
+      pick(id);
+    });
+    overlay.querySelector("#ppNewName").addEventListener("keydown",(e)=>{
+      if(e.key==="Enter") overlay.querySelector("#ppCreateBtn").click();
+    });
+
+    fetchExistingProfiles().then((list)=>{
+      allProfiles=list.filter(n=>n!==GUEST_ID).sort((a,b)=>a.localeCompare(b));
+      renderList();
+    }).catch(()=>{ allProfiles=[]; renderList(); });
+  });
+}
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+async function changeProfileId(){
+  try{
+    const id=await showProfilePicker({mode:"switch",currentId:profileId});
+    if(!id || id===profileId)return;
+    localStorage.setItem("reset30_profileId",id);
+    // A deliberate switch should land straight on the app's pages, not show the
+    // picker again on the very next load — that's a one-time skip for this reload only.
+    sessionStorage.setItem("reset30_skipPickerOnce","1");
+    location.reload();
+  }catch(e){
+    alert("Couldn't reach the shared dashboard to switch trackers right now. Try again once you're online.");
+  }
+}
+let profileId=sanitizeProfileId(localStorage.getItem("reset30_profileId")||"");
+let stateRef=null, firebaseOnline=false;
+function setSyncStatus(text){const el=document.getElementById("syncStatus");if(el)el.textContent=text;}
+function attachStateSync(){
+  stateRef=firebase.database().ref("adhdPlannerState/"+profileId);
+  stateRef.on("value",function(snap){
+    const remote=snap.val();
+    firebaseOnline=true;
+    if(!remote){ // nothing in the cloud yet — push whatever we have locally
+      setSyncStatus("☁️ synced ("+profileId+")");
+      if(state && Object.keys(state).length) stateRef.set(state);
+      return;
+    }
+    if(remote.lastSaved===state.lastSaved){setSyncStatus("☁️ synced ("+profileId+")");return;} // our own echoed write
+    // Only accept the cloud copy if it's actually newer than what we have locally —
+    // otherwise a stale cloud snapshot can silently overwrite a newer local edit (e.g. a date you just set).
+    if(state.lastSaved && remote.lastSaved && new Date(remote.lastSaved)<=new Date(state.lastSaved)){
+      setSyncStatus("☁️ synced ("+profileId+")");
+      stateRef.set(state); // push our newer local copy up
+      return;
+    }
+    state=remote;
+    ensureStateDefaults(); // remote data may predate newer fields (e.g. bodyProfile) — fill them in
+    localStorage.setItem(dataKey(),JSON.stringify(state));
+    updateLastSavedLabel();
+    setSyncStatus("☁️ synced from other device ("+profileId+")");
+    if(typeof currentTab!=="undefined"){ if(currentTab==="Dashboard"){render();}else{tab(currentTab);} }
+  },function(err){
+    firebaseOnline=false;
+    setSyncStatus("☁️ offline (saving locally only)");
+    console.error("Firebase sync error:",err);
+  });
+}
+async function initApp(){
+  setSyncStatus("☁️ connecting…");
+  let firebaseReady=true;
+  try{ firebase.initializeApp(firebaseConfig); }
+  catch(err){ firebaseReady=false; console.error("Firebase init failed:",err); }
+  // Always show the profile picker on open — it lists existing profiles (with search
+  // and delete), pins Guest on top, and offers a one-tap "Continue" for whichever
+  // profile this device last used, plus "Start fresh" to forget it.
+  // Exception: right after a deliberate switch (see changeProfileId), skip it once
+  // so the person lands straight on the app's pages instead of re-picking immediately.
+  const remembered=profileId||null;
+  const skipOnce=sessionStorage.getItem("reset30_skipPickerOnce")==="1";
+  sessionStorage.removeItem("reset30_skipPickerOnce");
+  let chosen=null;
+  if(skipOnce && remembered){
+    chosen=remembered;
+  } else {
+    try{ chosen=await showProfilePicker({mode:"startup",currentId:remembered}); }
+    catch(e){ console.error("Profile picker failed:",e); }
+  }
+  profileId=chosen||remembered||GUEST_ID;
+  localStorage.setItem("reset30_profileId",profileId);
+  loadLocalState();
+  if(firebaseReady){
+    try{ attachStateSync(); }
+    catch(err){ setSyncStatus("☁️ offline (saving locally only)"); console.error("Firebase sync attach failed:",err); }
+  } else {
+    setSyncStatus("☁️ offline (saving locally only)");
+  }
+  render();
+  updateLastSavedLabel();
+}
+function persist(){
+  state.lastSaved=new Date().toISOString();
+  localStorage.setItem(dataKey(),JSON.stringify(state));
+  updateLastSavedLabel();
+  if(stateRef){
+    setSyncStatus("☁️ saving…");
+    stateRef.set(state).then(function(){setSyncStatus("☁️ synced");}).catch(function(err){
+      setSyncStatus("☁️ offline (saving locally only)");
+      console.error("Cloud save failed:",err);
+    });
+  }
+}
+function formatLastSaved(iso){
+  if(!iso)return "Not saved yet";
+  const d=new Date(iso);
+  return "Last saved: "+d.toLocaleDateString(undefined,{day:"numeric",month:"short",year:"numeric"})+", "+d.toLocaleTimeString(undefined,{hour:"2-digit",minute:"2-digit"});
+}
+function updateLastSavedLabel(){const el=document.getElementById("lastSavedLabel");if(el)el.textContent=formatLastSaved(state.lastSaved);}
+function manualSave(){
+  persist();
+  const btn=document.getElementById("saveBtn");
+  if(btn){const old=btn.textContent;btn.textContent="✓ Saved";setTimeout(()=>{btn.textContent=old;},1200);}
+}
+function exportBackup(){
+  persist();
+  const blob=new Blob([JSON.stringify(state,null,2)],{type:"application/json"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  const stamp=fmtLocalDate(new Date());
+  a.href=url;a.download="reset-dashboard-backup-"+stamp+".json";
+  document.body.appendChild(a);a.click();document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+function triggerImport(){document.getElementById("importFile").click();}
+function importBackup(evt){
+  const file=evt.target.files&&evt.target.files[0];
+  if(!file)return;
+  const reader=new FileReader();
+  reader.onload=function(e){
+    try{
+      const incoming=JSON.parse(e.target.result);
+      if(!confirm("Import this backup? It will replace everything currently on this device."))return;
+      state=incoming;
+      ensureStateDefaults();
+      persist();
+      location.reload();
+    }catch(err){
+      alert("That file doesn't look like a valid backup (couldn't be read as JSON).");
+    }
+  };
+  reader.readAsText(file);
+  evt.target.value="";
+}
+function save(){persist();if(currentTab==="Dashboard"){render()}else{tab(currentTab)}}
+function key(prefix,id){return prefix+"_"+state.day+"_"+id}
+function toggle(prefix,id){let k=key(prefix,id);state.done[k]=!state.done[k];save()}
+function setDay(d){state.day=d;render()}
+function fmtLocalDate(dt){
+ const y=dt.getFullYear(), m=String(dt.getMonth()+1).padStart(2,"0"), da=String(dt.getDate()).padStart(2,"0");
+ return `${y}-${m}-${da}`;
+}
+function dateForDay(d){
+ if(!state.startDate)return "";
+ const start=new Date(state.startDate+"T00:00:00");
+ start.setDate(start.getDate()+(d-1));
+ return fmtLocalDate(start);
+}
+function weekdayForDay(d){
+ const iso=dateForDay(d);
+ const names=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+ if(iso) return names[new Date(iso+"T00:00:00").getDay()];
+ return names[[1,2,3,4,5,6,0][(d-1)%7]];
+}
+function onSelectDate(val){
+ if(!val)return;
+
+ // Edit the date of the currently selected Day instead of locking
+ // the 30-day plan to the first date ever chosen.
+ const selectedDay=state.day||1;
+ const chosen=new Date(val+"T00:00:00");
+ const newStart=new Date(chosen);
+ newStart.setDate(newStart.getDate()-(selectedDay-1));
+ state.startDate=fmtLocalDate(newStart);
+
+ persist();
+ if(currentTab==="Dashboard"){render()}else{tab(currentTab)}
+}
+function toggleSet(obj,id){obj[id]=!obj[id];save()}
+function addIncome(){
+ const amtEl=document.getElementById('incomeAmt'), amt=parseFloat(amtEl.value);
+ const dt=document.getElementById('incomeDate').value || dateForDay(state.day) || fmtLocalDate(new Date());
+ const note=document.getElementById('incomeNote').value;
+ if(!amt || amt<=0) return;
+ state.incomeLog.push({date:dt, amount:amt, note});
+ save();
+}
+function removeIncome(i){state.incomeLog.splice(i,1);save()}
+function incomeTotals(){
+ const total=state.incomeLog.reduce((s,e)=>s+e.amount,0);
+ let weekTotal=0;
+ if(state.incomeLog.length){
+  const sorted=[...state.incomeLog].sort((a,b)=>a.date<b.date?1:-1);
+  const latest=new Date(sorted[0].date+"T00:00:00");
+  const weekAgo=new Date(latest); weekAgo.setDate(weekAgo.getDate()-6);
+  weekTotal=state.incomeLog.filter(e=>{const dt=new Date(e.date+"T00:00:00");return dt>=weekAgo && dt<=latest}).reduce((s,e)=>s+e.amount,0);
+ }
+ return {total, weekTotal};
+}
+const businessDays=[
+["Define your exact offer & starter price",[
+"Write one clear sentence describing the service and customer problem",
+"Choose the ideal local-business customer type",
+"Define exactly what is included in the starter package",
+"Define what is not included / paid add-ons",
+"Choose a realistic starter price in AUD",
+"Write the expected delivery time",
+"Create a simple one-page offer sheet",
+"Research 3 competitor prices for similar services",
+"Save the offer sheet somewhere you'll actually reuse it"
+]],
+["Build ONE demo website",[
+"Choose a fictional/local-shop example",
+"Build the homepage and key service/product section",
+"Make the site mobile-friendly",
+"Add clear contact / booking action",
+"Add basic local SEO structure",
+"Take 3 portfolio screenshots",
+"Write 3 sentences explaining the business problem solved",
+"Choose colours/fonts that look professional, not default",
+"Proofread all text for typos"
+]],
+["List 20 local shops",[
+"Find 20 suitable local businesses",
+"Record business name and contact details",
+"Record current website / social presence",
+"Note one specific problem for each business",
+"Mark each lead Hot / Warm / Cold",
+"Add the best contact method",
+"Choose the first 5 businesses to call",
+"Group shops by suburb/area for efficient calling",
+"Save the list in one place you'll check daily"
+]],
+["Write your sales pitch",[
+"Write a 20–30 second cold-call opening",
+"Write a short WhatsApp version",
+"Write a short email version",
+"Prepare answers to 'How much?', 'I already have a website', and 'Not interested'",
+"Write a simple follow-up message",
+"Create one sentence explaining the business benefit",
+"Read the pitch aloud 3 times",
+"Time the cold-call opening — aim under 30 seconds",
+"Get one person to review your pitch for clarity"
+]],
+["Practice the pitch",[
+"Practice the opening until it sounds natural",
+"Do 5 test calls with friends/family",
+"Record the objections you hear",
+"Shorten anything that sounds scripted",
+"Improve your value statement",
+"Practice asking for the next step",
+"Choose the final pitch for real outreach",
+"Notice where you hesitate or ramble, and fix it",
+"Record yourself once and listen back"
+]],
+["Call 5 real shops",[
+"Call prospect 1",
+"Call prospect 2",
+"Call prospect 3",
+"Call prospect 4",
+"Call prospect 5",
+"Log every outcome",
+"Send follow-up messages to interested leads",
+"Note the best time of day to reach decision-makers",
+"Prepare tomorrow's 5 target businesses before stopping"
+]],
+["Call 5 more + follow up",[
+"Call 5 new prospects",
+"Follow up with Day 6 leads",
+"Ask interested prospects for a short discovery conversation",
+"Log objections",
+"Identify the most common business problem",
+"Update your pitch if needed",
+"Set the next follow-up date for every warm lead",
+"Review which objection came up most today",
+"Update your pitch with today's learnings"
+]],
+["Set up payment & invoicing",[
+"Confirm UPI/bank payment method",
+"Create a simple invoice template",
+"Create a payment-request message",
+"Define deposit / milestone expectations",
+"Create a basic client intake checklist",
+"Create a folder structure for client projects",
+"Test your own payment/invoice workflow",
+"Decide your late-payment policy",
+"Save the invoice template where you can find it fast"
+]],
+["Call 5 more + follow ups",[
+"Call 5 new prospects",
+"Follow up every due lead",
+"Send at least one personalised pitch",
+"Ask one qualified lead for a meeting",
+"Log responses",
+"Update pipeline status",
+"Write the next action before ending work",
+"Track which channel (call/WhatsApp/email) gets the best response",
+"Send a thank-you message to anyone who replied"
+]],
+["Start first paying client's website",[
+"Confirm scope and deliverables",
+"Collect logo, business details, images and copy",
+"Confirm booking/contact requirements",
+"Create project structure",
+"Build the main page",
+"Send a progress update",
+"Log expected project revenue",
+"Confirm the deadline in writing with the client",
+"Set up a shared folder/link for client files"
+]],
+["Finish first client site",[
+"Complete all agreed pages",
+"Add booking/contact feature",
+"Test mobile layout",
+"Test links and forms",
+"Check spelling and business details",
+"Perform basic local SEO checks",
+"Send final preview for approval",
+"Double-check pricing and contact info are correct",
+"Prepare the handover/launch message"
+]],
+["Feedback + testimonial/referral",[
+"Collect client feedback",
+"Complete agreed revisions",
+"Ask for a testimonial",
+"Ask for one referral",
+"Save a screenshot / case-study proof",
+"Record actual revenue received",
+"Mark the client as Won",
+"Fix any issues raised immediately",
+"Add the testimonial to your portfolio site"
+]],
+["Choose business name + simple logo",[
+"Shortlist 3 business names",
+"Check that the name is usable online",
+"Choose the final name",
+"Create a simple Canva logo",
+"Write a short tagline",
+"Create a basic brand folder",
+"Update your portfolio branding",
+"Check the name isn't already heavily used locally",
+"Save logo files in a couple of sizes/formats"
+]],
+["Set up Instagram/Facebook business page",[
+"Create or update business profile",
+"Add clear service description",
+"Add contact method",
+"Add portfolio/demo link",
+"Create profile image/logo",
+"Prepare first 3 post ideas",
+"Publish or schedule the first post",
+"Follow/engage with 10 local businesses",
+"Plan a simple weekly posting rhythm"
+]],
+["Set up Google Business Profile",[
+"Create/claim the profile if eligible",
+"Complete business information accurately",
+"Add service categories",
+"Add website/contact details",
+"Add appropriate photos",
+"Request reviews when legitimately available",
+"Use your own local visibility as a case-study learning opportunity",
+"Add opening hours and service area",
+"Bookmark the dashboard link for quick updates"
+]],
+["Build your one-page portfolio/pricing site",[
+"Add your offer",
+"Add starter price or clear pricing approach",
+"Add demo website",
+"Add testimonial/case study",
+"Add contact method",
+"Add booking/contact CTA",
+"Test the whole page on mobile",
+"Check the page loads quickly, not sluggishly",
+"Share the link with 2 people for feedback"
+]],
+["Create 3 content pieces",[
+"Create a before/after website example",
+"Create a post explaining why a local business needs a good website",
+"Create a testimonial/case-study post",
+"Add a clear call to action",
+"Publish the 3 pieces",
+"Record views/replies/leads",
+"Reuse the strongest content in outreach",
+"Use a consistent caption style/tone",
+"Add relevant local hashtags or tags"
+]],
+["Set up booking for your own business",[
+"Create your own booking/contact method",
+"Set available times",
+"Write booking confirmation message",
+"Test booking from a second device",
+"Test the confirmation flow",
+"Add booking CTA to your portfolio",
+"Make one test booking and cancel it correctly",
+"Add a reminder/confirmation step",
+"Decide what happens if a client no-shows"
+]],
+["Call 10 more shops",[
+"Call 10 prospects",
+"Use your real client/demo as proof",
+"Follow up warm leads",
+"Ask for a meeting when qualified",
+"Log every response",
+"Update pipeline stages",
+"Set next actions for every warm/hot lead",
+"Prioritise the warmest 5 leads first",
+"Block interruptions during the calling window"
+]],
+["Ask for referrals",[
+"Ask first client for 2 introductions",
+"Ask friends/family/network for 2 introductions each where appropriate",
+"Send a short referral message",
+"Record every introduction",
+"Contact new referrals promptly",
+"Thank people who refer you",
+"Track referral source",
+"Make the ask specific ('know anyone who needs a website?')",
+"Offer a small thank-you for successful referrals"
+]],
+["Review first 21 days",[
+"Count calls made",
+"Count conversations",
+"Count leads",
+"Count proposals",
+"Count clients won",
+"Calculate conversion rate",
+"Write what worked and what to change",
+"Identify your single best-performing outreach method",
+"Decide one thing to stop doing next"
+]],
+["Improve your offer",[
+"Review objections and requests",
+"Identify the service people valued most",
+"Refine package wording",
+"Refine starter price if evidence supports it",
+"Create one useful add-on",
+"Clarify turnaround time",
+"Update your sales materials",
+"Test the updated offer on your next 3 calls",
+"Update your one-page portfolio with the new offer"
+]],
+["Build a 30-business prospect list",[
+"Find 30 new prospects",
+"Record contact details",
+"Record website/social problem",
+"Assign Hot/Warm/Cold",
+"Choose the first 10 to contact",
+"Add follow-up dates",
+"Remove poor-fit leads",
+"Spread prospects across a few suburbs/industries",
+"Flag any repeat businesses from earlier lists"
+]],
+["Sales sprint",[
+"Make 10 calls",
+"Send 10 personalised WhatsApp/email messages",
+"Follow up all due leads",
+"Ask qualified leads for meetings",
+"Send proposals where appropriate",
+"Log outcomes",
+"Schedule every next step",
+"Take a short break between call blocks to stay sharp",
+"Note today's wins, not just outcomes"
+]],
+["Build another portfolio case study",[
+"Choose a different business type",
+"Build a polished demo",
+"Make it mobile-friendly",
+"Add a clear CTA",
+"Add local SEO basics",
+"Capture screenshots",
+"Write the case-study story",
+"Use a different layout/style than your first demo",
+"Link the new case study from your main portfolio"
+]],
+["Create a local SEO add-on",[
+"Define what your local SEO add-on includes",
+"Choose a simple deliverable",
+"Create a checklist",
+"Define an add-on price",
+"Write a one-paragraph explanation",
+"Add it to your sales pitch",
+"Add it to your pricing page",
+"List 3 concrete local-SEO actions it includes",
+"Explain the expected benefit in plain language"
+]],
+["Publish proof + content",[
+"Publish one case study",
+"Publish one demo/example",
+"Publish one testimonial/proof post",
+"Add clear CTA to each",
+"Share to appropriate local/network channels",
+"Track enquiries",
+"Save the best-performing post",
+"Tag/mention the client where appropriate (with permission)",
+"Reply to every comment/enquiry within a day"
+]],
+["Clean and organise your pipeline",[
+"Review every lead",
+"Move each lead to the correct stage",
+"Close or archive dead leads",
+"Set dates for all follow-ups",
+"Send pending proposals",
+"Identify your 5 hottest opportunities",
+"Plan tomorrow's outreach list",
+"Delete/merge duplicate lead entries",
+"Reconfirm contact details for hot leads"
+]],
+["Closing day",[
+"Contact your hottest leads first",
+"Follow up every outstanding proposal",
+"Ask directly for the next step",
+"Handle objections calmly",
+"Offer a clear scope and timeline",
+"Record wins and losses",
+"Schedule delivery work for any new client",
+"Prepare a simple onboarding message for new clients",
+"Note lessons for next month's plan"
+]],
+["30-day review + next 30-day goals",[
+"Review total business tasks completed",
+"Review calls, leads, meetings and proposals",
+"Review clients won",
+"Review total revenue received",
+"Calculate conversion rate",
+"Identify your best lead source",
+"Set the next 30-day revenue and client targets",
+"Decide whether to raise prices for month two",
+"Write 3 things you're proud of from this month"
+]]
+];
+
+const businessMotivation=[
+"Clarity before hustle.",
+"One strong demo is better than ten unfinished ideas.",
+"Your list creates opportunities; your follow-up creates conversations.",
+"Simple and specific beats clever.",
+"Practice turns fear into a repeatable process.",
+"Today is about conversations, not perfection.",
+"Follow-up is part of selling, not an extra task.",
+"Make it easy for someone to pay you.",
+"Consistency in outreach creates a pipeline.",
+"Deliver one excellent result.",
+"Finish, test, then ask for feedback.",
+"Proof compounds.",
+"Your brand only needs to be clear and trustworthy.",
+"Visibility is built one useful post at a time.",
+"Use your own business to demonstrate your service.",
+"Make it easy to understand what you do.",
+"Show the result, not just the promise.",
+"Build systems you can repeat.",
+"Real proof makes outreach easier.",
+"Referrals are earned through useful work and a clear ask.",
+"Measure the process, not just the outcome.",
+"Improve what the market teaches you.",
+"A larger list gives you more chances to find fit.",
+"Today's job is activity with intention.",
+"Create proof that makes your next sale easier.",
+"Turn your service into a clear package.",
+"Let useful content support your sales conversations.",
+"A clean pipeline protects your focus.",
+"Ask clearly for the next step.",
+"Review, learn, simplify, repeat."
+];
+
+function businessState(){
+  state.business=state.business||{};
+  state.business.days=state.business.days||{};
+  state.business.leads=state.business.leads||[];
+  state.business.metrics=state.business.metrics||{};
+  state.business.followups=state.business.followups||[];
+  return state.business;
+}
+function bday(d){
+  const b=businessState();
+  b.days[d]=b.days[d]||{tasks:{},calls:0,answered:0,leads:0,meetings:0,proposals:0,won:0,expected:0,notes:""};
+  return b.days[d];
+}
+function btoggle(d,i){
+  const b=bday(d); b.tasks[i]=!b.tasks[i]; saveBusinessOnly();
+}
+function setBusinessMetric(d,field,val){
+  const b=bday(d); let n=parseFloat(val);
+  if(!Number.isFinite(n)||n<0)n=0;
+  b[field]=n; saveBusinessOnly();
+}
+function saveBusinessOnly(){
+  persist();
+  if(currentTab==="Focus") tab("Focus");
+}
+function businessDayPct(d){
+  const b=bday(d), total=businessDays[d-1][1].length;
+  const done=Object.values(b.tasks||{}).filter(Boolean).length;
+  return total?Math.round(done/total*100):0;
+}
+function businessTotals(){
+  const b=businessState(), totals={calls:0,answered:0,leads:0,meetings:0,proposals:0,won:0,expected:0,revenue:incomeTotals().total};
+  for(let d=1;d<=30;d++){
+    const x=bday(d);
+    ["calls","answered","leads","meetings","proposals","won","expected"].forEach(k=>totals[k]+=Number(x[k]||0));
+  }
+  return totals;
+}
+function addBusinessLead(){
+  const name=(document.getElementById("blName")?.value||"").trim();
+  if(!name)return;
+  const b=businessState();
+  b.leads.push({
+    name,
+    contact:(document.getElementById("blContact")?.value||"").trim(),
+    stage:document.getElementById("blStage")?.value||"New",
+    next:(document.getElementById("blNext")?.value||""),
+    value:parseFloat(document.getElementById("blValue")?.value||0)||0,
+    source:(document.getElementById("blSource")?.value||"").trim()
+  });
+  saveBusinessOnly();
+}
+function removeBusinessLead(i){businessState().leads.splice(i,1);saveBusinessOnly()}
+function addBusinessFollowup(){
+  const name=(document.getElementById("fuName")?.value||"").trim();
+  const date=document.getElementById("fuDate")?.value||"";
+  if(!name||!date)return;
+  businessState().followups.push({name,date,note:(document.getElementById("fuNote")?.value||"").trim(),done:false});
+  saveBusinessOnly();
+}
+function toggleFollowup(i){businessState().followups[i].done=!businessState().followups[i].done;saveBusinessOnly()}
+function removeFollowup(i){businessState().followups.splice(i,1);saveBusinessOnly()}
+function businessSummary(){
+  const t=businessTotals(), b=businessState();
+  const totalTasks=businessDays.reduce((s,_,i)=>s+businessDays[i][1].length,0);
+  const doneTasks=businessDays.reduce((s,_,i)=>s+Object.values(bday(i+1).tasks||{}).filter(Boolean).length,0);
+  const pct=totalTasks?Math.round(doneTasks/totalTasks*100):0;
+  const conv=t.calls?Math.round(t.won/t.calls*100):0;
+  const response=t.calls?Math.round(t.answered/t.calls*100):0;
+  return `<div class="card span12"><h3>📊 30-day business summary</h3>
+    <div class="business-kpis">
+      <div class="business-kpi"><b>${pct}%</b><span>Business plan complete</span></div>
+      <div class="business-kpi"><b>${t.calls}</b><span>Calls</span></div>
+      <div class="business-kpi"><b>${t.leads}</b><span>Leads</span></div>
+      <div class="business-kpi"><b>${t.meetings}</b><span>Meetings</span></div>
+      <div class="business-kpi"><b>${t.proposals}</b><span>Proposals</span></div>
+      <div class="business-kpi"><b>${t.won}</b><span>Clients won</span></div>
+    </div>
+    <div class="business-kpis">
+      <div class="business-kpi"><b>$${t.revenue.toFixed(0)}</b><span>Revenue received</span></div>
+      <div class="business-kpi"><b>$${t.expected.toFixed(0)}</b><span>Expected project value</span></div>
+      <div class="business-kpi"><b>${response}%</b><span>Call answer rate</span></div>
+      <div class="business-kpi"><b>${conv}%</b><span>Call-to-client rate</span></div>
+      <div class="business-kpi"><b>${b.leads.filter(x=>x.stage==="Hot").length}</b><span>Hot leads</span></div>
+      <div class="business-kpi"><b>${b.followups.filter(x=>!x.done).length}</b><span>Open follow-ups</span></div>
+    </div>
+  </div>`;
+}
+function businessDayCard(d){
+  const title=businessDays[d-1][0], items=businessDays[d-1][1], b=bday(d), pct=businessDayPct(d);
+  const metrics=["calls","answered","leads","meetings","proposals","won"];
+  return `<details class="business-day ${pct===100?'done':''}" ${d===state.day?'open':''}>
+    <summary><b>Day ${d}: ${title}</b><span class="business-meta"><span class="badge">${pct}%</span><span class="small">${b.calls||0} calls · ${b.leads||0} leads · ${b.won||0} won</span></span></summary>
+    <div class="bd-body">
+      <p class="small"><b>Motivation:</b> ${businessMotivation[d-1]}</p>
+      <div class="business-progress"><div class="bar" style="width:${pct}%"></div></div>
+      <div class="business-checkgrid">${items.map((x,i)=>`<label class="check"><input type="checkbox" ${b.tasks[i]?'checked':''} onchange="btoggle(${d},${i})"><span>${x}</span></label>`).join("")}</div>
+      <div class="business-metrics">
+        ${metrics.map(k=>`<label class="small">${k.charAt(0).toUpperCase()+k.slice(1)}<input type="number" min="0" value="${b[k]||0}" onchange="setBusinessMetric(${d},'${k}',this.value)"></label>`).join("")}
+      </div>
+      <label class="small" style="display:block;margin-top:10px">Expected project value (AUD)<input type="number" min="0" value="${b.expected||0}" onchange="setBusinessMetric(${d},'expected',this.value)"></label>
+      <label class="small" style="display:block;margin-top:8px">Day notes<textarea oninput="bday(${d}).notes=this.value;persist()" placeholder="What happened? Objections, wins, next action...">${b.notes||""}</textarea></label>
+    </div>
+  </details>`;
+}
+function focusPage(){
+  const t=businessTotals(), b=businessState();
+  const weekTarget=1000;
+  const weekPct=Math.min(100,Math.round((incomeTotals().weekTotal/weekTarget)*100));
+  const due=b.followups.filter(x=>!x.done).sort((a,z)=>a.date.localeCompare(z.date));
+  return `<div class="grid">
+    <div class="card span12"><h2>🎯 Focus — Business Growth Command Centre</h2>
+      <p class="small">One business outcome at a time. The tracker below turns your original 21-day plan into a 30-day system while keeping the rest of your Reset dashboard intact.</p>
+      <div class="alert"><b>Today's rule:</b> choose the business task that moves money or proof forward. Then stop at your planned focus block.</div>
+    </div>
+    <div class="card span6"><h3>🔥 Today — Day ${state.day}</h3>
+      <p class="quote">${businessDays[state.day-1][0]}</p>
+      <p>${businessMotivation[state.day-1]}</p>
+      <div class="progress"><div class="bar" style="width:${businessDayPct(state.day)}%"></div></div>
+      <p class="small">${businessDayPct(state.day)}% of today's business checklist complete</p>
+      <button class="btn" onclick="document.querySelector('.business-day:nth-of-type(${state.day})')?.scrollIntoView({behavior:'smooth'})">Open today's card</button>
+    </div>
+    <div class="card span6"><h3>🍅 Pomodoro timer</h3><div class="timer" id="pomodoroDisplay">25:00</div><p class="small" id="pomodoroLabel">Focus block</p><div class="row"><button class="btn" onclick="pomoStart()">Start</button><button class="btn secondary" onclick="pomoPause()">Pause</button><button class="btn secondary" onclick="pomoReset()">Reset</button></div><p class="small">Focus blocks completed today: <b id="pomodoroCount">0</b> · Work 25 min → break 5 min (long break after every 4)</p></div>
+    <div class="card span6"><h3>💰 Income goal</h3>
+      <p>This week: <b>$${incomeTotals().weekTotal.toFixed(0)} / $${weekTarget}</b> (${weekPct}%)</p>
+      <div class="progress"><div class="bar" style="width:${weekPct}%"></div></div>
+      <p class="small">All-time received: $${incomeTotals().total.toFixed(0)}</p>
+      <div class="row">
+        <input type="date" id="incomeDate" value="${dateForDay(state.day)}" style="flex:1">
+        <input type="text" id="incomeAmt" placeholder="Amount AUD" style="flex:1">
+      </div>
+      <input type="text" id="incomeNote" placeholder="What was it for?" style="margin-top:8px">
+      <button class="btn" style="margin-top:8px" onclick="addIncome()">+ Add income</button>
+    </div>
+    ${businessSummary()}
+    <div class="card span12"><h3>📋 30-day execution plan</h3>
+      <p class="small">Expand any day. Your checklist progress is saved automatically in this browser.</p>
+      ${businessDays.map((_,i)=>businessDayCard(i+1)).join("")}
+    </div>
+    <div class="card span12"><h3>📞 Lead pipeline</h3>
+      <div class="business-metrics">
+        <input id="blName" placeholder="Business name">
+        <input id="blContact" placeholder="Phone / email">
+        <select id="blStage"><option>New</option><option>Contacted</option><option>Warm</option><option>Hot</option><option>Meeting</option><option>Proposal</option><option>Won</option><option>Lost</option></select>
+        <input id="blNext" type="date">
+        <input id="blValue" type="number" min="0" placeholder="Potential AUD">
+        <input id="blSource" placeholder="Source / referral">
+      </div>
+      <button class="btn" style="margin-top:8px" onclick="addBusinessLead()">+ Add lead</button>
+      ${b.leads.length?`<div style="overflow:auto;margin-top:12px"><table class="pipeline-table"><thead><tr><th>Business</th><th>Contact</th><th>Stage</th><th>Next</th><th>Value</th><th>Source</th><th></th></tr></thead><tbody>${b.leads.map((x,i)=>`<tr><td>${x.name}</td><td>${x.contact}</td><td>${x.stage}</td><td>${x.next||"—"}</td><td>$${Number(x.value||0).toFixed(0)}</td><td>${x.source||"—"}</td><td><button class="btn secondary" onclick="removeBusinessLead(${i})">✕</button></td></tr>`).join("")}</tbody></table></div>`:`<p class="small">No leads added yet. Start with the 20-shop list on Day 3.</p>`}
+    </div>
+    <div class="card span12"><h3>🔁 Follow-up reminder list</h3>
+      <div class="followup-row"><input id="fuName" placeholder="Lead / client"><input id="fuDate" type="date"><input id="fuNote" placeholder="What to do next"><button class="btn" onclick="addBusinessFollowup()">Add</button></div>
+      ${due.length?due.map((x)=>{const i=b.followups.indexOf(x);return `<div class="followup-row"><span><b>${x.name}</b></span><span>${x.date}</span><span>${x.note||""}</span><button class="btn secondary" onclick="toggleFollowup(${i})">Done</button><button class="btn secondary" onclick="removeFollowup(${i})">✕</button></div>`}).join(""):`<p class="small">No open follow-ups. Add the next date immediately after every sales conversation.</p>`}
+    </div>
+    <div class="card span12"><h3>🧭 Focus rules</h3>
+      ${check("businessfocus","Pick one primary business outcome")}${check("businessfocus","Do the planned focus block without multitasking")}${check("businessfocus","Log the numbers before stopping")}${check("businessfocus","Write the next action / follow-up")}${check("businessfocus","Stop work at the planned cut-off")}
+    </div>
+  </div>`;
+}
+function enabledTabList(){
+  const set=new Set(state.enabledTabs&&state.enabledTabs.length?state.enabledTabs:ALL_TABS.map(x=>x[0]));
+  set.add("Dashboard"); // Dashboard can never be hidden
+  return ALL_TABS.filter(x=>set.has(x[0]));
+}
+function renderTabsNav(){
+  document.getElementById("tabs").innerHTML=enabledTabList().map(x=>`<button data-tab="${x[0]}" class="${currentTab===x[0]?'active':''}" onclick="tab('${x[0]}')">${x[1]}</button>`).join("")+'<button type="button" class="pill" title="Choose which pages you see" onclick="openTabCustomizer()">⚙️ Pages</button>';
+}
+function injectTabCustomizerStyles(){
+  if(document.getElementById("tabCustomizerStyles"))return;
+  const style=document.createElement("style");
+  style.id="tabCustomizerStyles";
+  style.textContent=`
+#tabCustomizerOverlay{position:fixed;inset:0;background:rgba(38,48,43,.55);display:flex;align-items:center;justify-content:center;z-index:999;padding:20px}
+#tabCustomizerCard{background:#fff;border-radius:20px;max-width:380px;width:100%;max-height:86vh;overflow:auto;padding:20px;box-shadow:0 20px 60px #00000030}
+#tabCustomizerCard h3{margin:0 0 4px}
+.tc-row{display:flex;align-items:center;gap:10px;padding:9px 2px;border-bottom:1px solid #f0f1ef;cursor:pointer}
+.tc-row:last-of-type{border-bottom:0}
+.tc-row input{accent-color:var(--accent)}
+.tc-row.tc-locked{color:var(--muted)}
+`;
+  document.head.appendChild(style);
+}
+function openTabCustomizer(){
+  if(document.getElementById("tabCustomizerOverlay"))return;
+  injectTabCustomizerStyles();
+  const current=new Set(state.enabledTabs&&state.enabledTabs.length?state.enabledTabs:ALL_TABS.map(x=>x[0]));
+  const overlay=document.createElement("div");
+  overlay.id="tabCustomizerOverlay";
+  overlay.innerHTML='<div id="tabCustomizerCard">'
+    +'<h3>📌 Choose your pages</h3>'
+    +'<p class="small">Pick which pages show in your nav for this profile. Dashboard always stays.</p>'
+    +'<div id="tcList">'+ALL_TABS.map(x=>{
+      const locked=x[0]==="Dashboard";
+      return '<label class="tc-row'+(locked?" tc-locked":"")+'"><input type="checkbox" value="'+x[0]+'" '+(locked?"checked disabled":(current.has(x[0])?"checked":""))+'><span>'+x[1]+'</span></label>';
+    }).join("")+'</div>'
+    +'<div class="row" style="justify-content:flex-end;margin-top:16px">'
+    +'<button class="btn secondary" id="tcCancel" type="button">Cancel</button>'
+    +'<button class="btn" id="tcSave" type="button">Save</button>'
+    +'</div></div>';
+  document.body.appendChild(overlay);
+  overlay.addEventListener("click",(e)=>{ if(e.target===overlay) overlay.remove(); });
+  overlay.querySelector("#tcCancel").onclick=()=>overlay.remove();
+  overlay.querySelector("#tcSave").onclick=()=>{
+    const chosen=Array.from(overlay.querySelectorAll('#tcList input[type=checkbox]')).filter(cb=>cb.checked).map(cb=>cb.value);
+    if(!chosen.includes("Dashboard"))chosen.push("Dashboard");
+    state.enabledTabs=chosen;
+    persist();
+    overlay.remove();
+    if(!chosen.includes(currentTab)){ tab("Dashboard"); } else { renderTabsNav(); }
+  };
+}
+function render(){
+ currentTab="Dashboard";
+ const d=days[state.day-1], q=quotes[(state.day-1)%quotes.length];
+ renderTabsNav();
+ document.getElementById("app").innerHTML=dashboard(d,q);
+}
+function dashboard(d,q){
+  const guides = [
+    ["Today","🌿","Today","Your schedule, daily checklist, morning reset, rest and evening downshift."],
+    ["Food","🍲","Food","Meal structure, hydration and digestion-friendly food guidance."],
+    ["Grocery","🧺","Grocery","Pantry check, matching meal ideas, and your weekly shopping list."],
+    ["Movement","🚶","Movement","Today's walking, yoga/mobility and strength guidance."],
+    ["My Journal","📓","My Journal","Cycle tracking, morning journal, emotions through the day and daily gratitude."],
+    ["Focus","🎯","Focus","Business growth, sales pipeline, follow-ups, revenue and today's priorities."],
+    ["Care","🧴","Care","Face, hair, body, nails and grooming — daily and weekly plan."],
+    ["Brain Dump","🧠","Brain Dump","Capture everything, then sort it into clear priorities."]
+  ];
+  return `<section class="grid">
+  ${dayNav()}
+  <div class="card span12 hero"><div><span class="badge">DAY ${state.day} / 30</span><h2>${d[0]}</h2><div class="quote">“${q}”</div></div></div>
+  <div class="card span8"><h3>📅 30-day progress</h3><div class="daygrid">${days.map((_,i)=>`<button class="day ${i+1===state.day?'selected':''} ${dayComplete(i+1)?'done':''}" onclick="setDay(${i+1})">${i+1}</button>`).join("")}</div></div>
+  <div class="card span4"><h3>Today's direction</h3><p><b>Movement:</b> ${d[1]}</p><p><b>Breathing:</b> ${d[2]}</p><p><b>Food:</b> Choose simple meals; 6–8 glasses</p><p><b>Focus:</b> ${d[5]}</p></div>
+  ${dailyRecordSection()}
+  </section>`;
+}
+function dailyRecordSection(){
+  return `<div class="card span12"><h3>📋 Day ${state.day} — complete daily record</h3><p class="small">This is your end-of-day summary. Record what actually happened, not what you hoped would happen.</p></div>
+  <div class="card span6"><h3>🩻 Body, pain & gut</h3>
+   <label class="small">Pain today (0–10)</label>
+   <input type="number" min="0" max="10" value="${((state.records&&state.records[state.day])||{}).pain||""}" onchange="record('pain',this.value)">
+   <label class="small">Inflammation / bloating discomfort (0–10)</label>
+   <input type="number" min="0" max="10" value="${((state.records&&state.records[state.day])||{}).inflammation||""}" onchange="record('inflammation',this.value)">
+   <label class="small">Gut felt</label>
+  <label class="small">Gut felt</label>
+  <select id="gut" onchange="record('gut',this.value)"><option value="">Choose…</option><option>Great</option><option>Good</option><option>Okay</option><option>Bloated</option><option>Uncomfortable</option></select>
+  <label class="small">Body energy</label>
+  <select id="energy" onchange="record('energy',this.value)"><option value="">Choose…</option><option>High</option><option>Good</option><option>Moderate</option><option>Low</option><option>Very low</option></select>
+  <label class="small">Stiffness / tension</label>
+  <select id="stiff" onchange="record('stiff',this.value)"><option value="">Choose…</option><option>None</option><option>Mild</option><option>Moderate</option><option>High</option></select>
+  </div>
+  <div class="card span6"><h3>🧠 Mind</h3>
+  <label class="small">Mood</label>
+  <select id="mood" onchange="record('mood',this.value)"><option value="">Choose…</option><option>Great</option><option>Good</option><option>Neutral</option><option>Low</option><option>Anxious</option><option>Irritable</option></select>
+  <label class="small">Stress level</label>
+  <select id="stress" onchange="record('stress',this.value)"><option value="">Choose…</option><option>Low</option><option>Moderate</option><option>High</option><option>Very high</option></select>
+  <label class="small">Focus today</label>
+  <select id="focus" onchange="record('focus',this.value)"><option value="">Choose…</option><option>Sharp</option><option>Good</option><option>Scattered</option><option>Distracted</option><option>Foggy</option></select>
+  </div>
+  <div class="card span6"><h3>🍽️ Food reflection</h3>
+  <label class="small">How did food feel today?</label>
+  <select id="foodfeel" onchange="record('foodfeel',this.value)"><option value="">Choose…</option><option>Energising</option><option>Satisfying</option><option>Okay</option><option>Heavy</option><option>Bloating</option></select>
+  <label class="small">Best meal / food today</label>
+  <textarea id="bestmeal" placeholder="What worked well?" oninput="record('bestmeal',this.value)"></textarea>
+  </div>
+  <div class="card span6"><h3>🌙 Recovery reflection</h3>
+  <label class="small">Sleep quality last night</label>
+  <select id="sleep" onchange="record('sleep',this.value)"><option value="">Choose…</option><option>Great</option><option>Good</option><option>Okay</option><option>Poor</option><option>Very poor</option></select>
+  <label class="small">What helped me feel calmer?</label>
+  <textarea id="calm" placeholder="walk, breathing, pooja, music, rest…" oninput="record('calm',this.value)"></textarea>
+  </div>
+  <div class="card span12"><h3>📝 Day summary</h3>
+  <textarea id="summary" placeholder="One or two lines on how today actually went…" oninput="record('summary',this.value)"></textarea>
+  </div>`;
+}
+function check(prefix,text){
+ let id=text.replace(/[^a-z0-9]/gi,"").slice(0,24);let k=key(prefix,id);
+ return `<label class="check"><input type="checkbox" ${state.done[k]?'checked':''} onchange="toggle('${prefix}','${id}')"><span>${text}</span></label>`;
+}
+function waterTracker(){
+ let n=state.water[state.day]||0;
+ return `<div class="score">${n}<span style="font-size:16px"> cups</span></div><div class="row"><button class="btn" onclick="state.water[state.day]=Math.min(12,(state.water[state.day]||0)+1);save()">+1</button><button class="btn secondary" onclick="state.water[state.day]=Math.max(0,(state.water[state.day]||0)-1);save()">−1</button></div>`;
+}
+function dayComplete(d){return Object.keys(state.done).some(k=>k.includes("_"+d+"_")&&state.done[k])}
+let currentTab="Dashboard";
+function changeDay(delta){
+ let nd=state.day+delta; if(nd<1)nd=1; if(nd>30)nd=30; state.day=nd;
+ persist();
+ if(currentTab==="Dashboard"){render()}else{tab(currentTab)}
+}
+function dayNav(){
+ return `<div class="card span12" style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+ <button class="btn secondary" onclick="changeDay(-1)" ${state.day<=1?'disabled':''}>← Previous day</button>
+ <b>Day ${state.day} / 30</b>
+ <button class="btn secondary" onclick="changeDay(1)" ${state.day>=30?'disabled':''}>Next day →</button>
+ </div>`;
+}
+function updateTabHighlight(){
+ document.querySelectorAll('#tabs button[data-tab]').forEach(btn=>{
+   btn.classList.toggle('active',btn.dataset.tab===currentTab);
+ });
+}
+function tab(name){
+ // Re-read the shared saved state before every page render so changes made on any page are reflected everywhere.
+ const saved=localStorage.getItem(dataKey());
+ if(saved){try{state=JSON.parse(saved);}catch(e){/* keep current in-memory state if storage is temporarily invalid */}}
+ ensureStateDefaults();
+ if(name!=="Dashboard" && !enabledTabList().some(x=>x[0]===name)){ render(); return; } // page turned off for this profile
+ currentTab=name;
+ updateTabHighlight();
+ if(name==="Dashboard"){render();return}
+ let d=days[state.day-1], body="";
+ if(name==="Today") body=`<div class="grid">
+<div class="card span4"><h3>📅 Select Date</h3><label class="small">Set the date for this Day (you can change it anytime)</label><input type="date" id="selectDate" value="${dateForDay(state.day)}" onchange="onSelectDate(this.value)">${dateForDay(state.day)?`<p class="small">Day ${state.day} = ${dateForDay(state.day)} (${weekdayForDay(state.day)})</p>`:`<p class="small">Pick a date to anchor your 30-day plan.</p>`}</div>
+<div class="card span8"><h2>Day ${state.day}: ${d[0]}</h2></div>
+<div class="card span12"><h3>🛏️ Wake-up checklist</h3>
+${check("wake","Out of bed — no snoozing")}
+${check("wake","Make the bed")}
+</div>
+<div class="card span6"><h3>🌅 Morning reset · 30–45 min</h3>
+${check("morning","Wake + light exposure / open curtains")}
+${check("morning","Water after waking")}
+${check("morning","5–10 min pranayama / quiet breathing")}
+${check("morning","Gentle mobility")}
+${check("morning","Pooja / prayer if desired")}
+</div>
+<div class="card span6"><h3>🧠 Nervous-system rest</h3>
+${check("rest","2–5 min slow breathing")}
+${check("rest","One screen-free pause")}
+${check("rest","Eat one meal without multitasking")}
+${check("rest","10 min outside / sunlight")}
+</div>
+<div class="card span6"><h3>🏠 Chores: time-box</h3>
+${check("chores","15-min tidy sprint")}
+${check("chores","Kitchen reset ≤15 min")}
+${check("chores","Lunch prep & clean-up (1 hr)")}
+<label class="check"><input type="checkbox" ${state.done[key("chorerotation","done")]?'checked':''} onchange="toggleChoreDone()"><span>Today's chore: <b>${escapeAttr(choreOfDay())}</b></span></label>
+${check("chores","STOP when the timer ends")}
+${choreManagerHtml()}
+</div>
+<div class="card span6"><h3>🌙 Evening downshift · 30–45 min</h3>
+${check("evening","Stop work at your planned cut-off")}
+${check("evening","10 min gentle stretch")}
+${check("evening","Skincare + hair-care step")}
+${check("evening","5–10 min meditation")}
+${check("evening","Prepare tomorrow")}
+</div>
+<div class="card span12"><h3>🛏️ Bedtime checklist</h3>
+${check("bedtime","Phone on charge outside the bedroom (or Do Not Disturb)")}
+${check("bedtime","Lights dim / off")}
+${check("bedtime","In bed by target time")}
+</div>
+<div class="card span8"><p><b>Movement:</b> ${d[1]}</p><p><b>Pranayama:</b> ${d[2]} — keep it comfortable; no breath-holding needed.</p><p><b>Yoga/mobility:</b> ${d[3]}</p>
+<h3>Daily checklist</h3>${check("today","Morning reset completed")}${check("today","Nervous-system reset completed")}${check("today","Movement completed")}${check("today","Care completed")}${check("today","Focus / earning work completed")}${check("today","Grocery completed")}${check("today","My Journal / journaling completed")}${check("today","Night checklist (Evening downshift) completed")}</div>
+<div class="card span4"><h3>⏱ Focus timer</h3><div class="timer" id="timer">25:00</div><div class="row"><button class="btn" onclick="startTimer(25)">25 min</button><button class="btn secondary" onclick="startTimer(10)">10 min</button><button class="btn secondary" onclick="stopTimer()">Stop</button></div><p class="small">One task. Phone away. Stop when the block ends.</p></div></div>`;
+ if(name==="Food") body=foodPage();
+ if(name==="Preparation") body=prepPage();
+ if(name==="Movement") body=movementPage(d);
+  if(name==="My Journal") body=journalPage();
+
+ if(name==="Focus") body=focusPage();
+ if(name==="Care") body=carePage();
+ if(name==="Brain Dump") body=brainDumpPriorityPage();
+ if(name==="Notes") body=notesPage();
+ document.getElementById("app").innerHTML=dayNav()+body+`<p><button class="btn secondary" onclick="render()">← Dashboard</button></p>`;
+ if(name==="Focus") setTimeout(updatePomoDisplay,0);
+}
+
+const weekdayOrder=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+function choreOfDay(){
+  const today=weekdayForDay(state.day);
+  const idx=weekdayOrder.indexOf(today);
+  const list=state.choreList.length?state.choreList:["No chores added yet"];
+  return list[(idx>=0?idx:0)%list.length];
+}
+function addChore(){
+  const el=document.getElementById("newChoreInput");
+  const v=(el&&el.value||"").trim();
+  if(!v)return;
+  state.choreList.push(v);
+  persist();
+  tab("Today");
+}
+function removeChore(i){
+  state.choreList.splice(i,1);
+  persist();
+  tab("Today");
+}
+function toggleChoreDone(){
+  const k=key("chorerotation","done");
+  state.done[k]=!state.done[k];
+  save();
+}
+function choreManagerHtml(){
+  return `<div class="small" style="margin-top:10px"><b>Chore rotation</b> (repeats weekly, Mon→Sun — add or remove anytime):</div>
+  <div class="custom-item-list" style="margin-top:6px">${state.choreList.map((c,i)=>`<div class="custom-item-row" style="grid-template-columns:1fr auto"><span class="custom-item-name">${escapeAttr(c)}</span><button class="btn secondary" onclick="removeChore(${i})">✕</button></div>`).join("")||`<p class="small">No chores in the list.</p>`}</div>
+  <div class="row" style="margin-top:8px"><input type="text" id="newChoreInput" placeholder="Add a chore…" style="flex:1" onkeydown="if(event.key==='Enter'){addChore()}"><button class="btn" onclick="addChore()">Add</button></div>`;
+}
+const groomingWeekly={
+ "Monday":["Hair oil massage (scalp, pre-wash)","Nails: trim/file if needed","Cuticle push-back if dry"],
+ "Tuesday":["Hair wash + conditioner","Condition mid-lengths to ends, not scalp","Body scrub in the shower","Moisturize straight after towel-drying"],
+ "Wednesday":["Scalp scrub / exfoliation","Underarm: shave or trim","Lip scrub + balm if dry"],
+ "Thursday":["Hair mask — deep condition 15–20 min, rinse well","Moisturize body extra after shower","Elbows/knees: extra moisturizer or scrub"],
+ "Friday":["Hair wash if due (2–3x/week guide)","Face: wax/thread touch-up if needed","Eyebrows: shape/tidy if needed"],
+ "Saturday":["Feet: scrub + file + moisturize","Bikini area: trim/wax if needed","Full body scrub","Nails: reshape/repaint if desired"],
+ "Sunday":["Rest day for hair — light oil only if desired","Nails: reshape/repaint if needed","Face mask / extra self-care if you feel like it","Plan next week's grooming around your schedule"]
+};
+function groomingWeeklyHtml(){
+ const today=weekdayForDay(state.day);
+ const order=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+ return order.map(day=>{
+  const items=groomingWeekly[day]||[];
+  const isToday=day===today;
+  const rows=items.map((it,i)=>{const k=key("groom",day+i);return `<label class="check"><input type="checkbox" ${state.done[k]?'checked':''} onchange="toggle('groom','${day+i}')"><span>${it}</span></label>`}).join("");
+  return `<div class="card span6" style="${isToday?'outline:2px solid var(--accent)':''}"><h4>${day}${isToday?" (today)":""}</h4>${rows}</div>`;
+ }).join("");
+}
+const brainDumpCategories=["To call","To email","New idea","To research"];
+function brainDumpMigrate(){
+  // Older items did not have a day. Keep them with the day that was active when this version first opens.
+  let changed=false;
+  (state.brainDump||[]).forEach(it=>{
+    if(!it.day){it.day=state.day;changed=true;}
+  });
+  if(changed)persist();
+}
+function addBrainDump(){
+  const el=document.getElementById("bdInput");
+  const catEl=document.getElementById("bdCategory");
+  const v=(el&&el.value||"").trim();
+  if(!v)return;
+  state.brainDump.unshift({text:v,date:new Date().toISOString(),day:state.day,category:(catEl&&catEl.value)||"New idea",done:false});
+  persist();
+  tab("Brain Dump");
+}
+function deleteBrainDump(i){state.brainDump.splice(i,1);persist();tab("Brain Dump");}
+function toggleBrainDump(i){state.brainDump[i].done=!state.brainDump[i].done;persist();tab("Brain Dump");}
+function transferBrainDumpToNextDay(){
+  const nextDay=Math.min(30,state.day+1);
+  if(nextDay===state.day){alert("You're already on Day 30 — there is no next day in this plan.");return;}
+  const current=state.brainDump||[];
+  let moved=0;
+  current.forEach(it=>{
+    if((it.day||state.day)===state.day && !it.done){it.day=nextDay;moved++;}
+  });
+  persist();
+  tab("Brain Dump");
+  if(moved) setTimeout(()=>alert(moved+" unfinished item"+(moved===1?"":"s")+" moved to Day "+nextDay+". Completed items were left out."),0);
+  else setTimeout(()=>alert("No unfinished Brain Dump items to move."),0);
+}
+const matrixLabels={
+  urgentImportant:"🔥 Important & Urgent",
+  importantNotUrgent:"🎯 Important & Not Urgent",
+  urgentNotImportant:"⚡ Not Important & Urgent",
+  neither:"🗑️ Not Important & Not Urgent"
+};
+function matrixMigrate(){
+  state.matrix=state.matrix||{urgentImportant:[],importantNotUrgent:[],urgentNotImportant:[],neither:[]};
+  let changed=false;
+  Object.keys(matrixLabels).forEach(quad=>{
+    state.matrix[quad]=state.matrix[quad]||[];
+    state.matrix[quad].forEach(it=>{
+      if(!it.day){it.day=state.day;changed=true;}
+      if(!it.date){it.date=new Date().toISOString();changed=true;}
+      if(it.done===undefined){it.done=false;changed=true;}
+    });
+  });
+  if(changed)persist();
+}
+function addMatrixItem(quad){
+  const el=document.getElementById("mx_"+quad);
+  const v=(el&&el.value||"").trim();
+  if(!v)return;
+  state.matrix[quad].unshift({text:v,date:new Date().toISOString(),day:state.day,done:false});
+  persist();
+  tab("Brain Dump");
+}
+function deleteMatrixItem(quad,i){state.matrix[quad].splice(i,1);persist();tab("Brain Dump");}
+function toggleMatrixItem(quad,i){state.matrix[quad][i].done=!state.matrix[quad][i].done;persist();tab("Brain Dump");}
+function transferMatrixToNextDay(){
+  const nextDay=Math.min(30,state.day+1);
+  if(nextDay===state.day){alert("You're already on Day 30 — there is no next day in this plan.");return;}
+  let moved=0;
+  Object.keys(matrixLabels).forEach(quad=>{
+    (state.matrix[quad]||[]).forEach(it=>{
+      if((it.day||state.day)===state.day && !it.done){it.day=nextDay;moved++;}
+    });
+  });
+  persist();
+  tab("Brain Dump");
+  setTimeout(()=>alert(moved?moved+" unfinished Priority Matrix item"+(moved===1?"":"s")+" moved to Day "+nextDay+". Completed items were left out.":"No unfinished Priority Matrix items to move."),0);
+}
+function matrixDayItems(quad){
+  return (state.matrix[quad]||[]).map((it,i)=>({...it,_i:i})).filter(it=>(it.day||state.day)===state.day);
+}
+function matrixQuadrantHtml(quad){
+  const items=matrixDayItems(quad);
+  const unfinished=items.filter(it=>!it.done).length;
+  return `<div class="card span6 matrix-quadrant">
+    <h4>${matrixLabels[quad]}</h4>
+    <div class="matrix-meta"><span class="small">${unfinished} unfinished · ${items.length} total</span></div>
+    <div class="row"><input type="text" id="mx_${quad}" placeholder="Add an item for Day ${state.day}…" style="flex:1" onkeydown="if(event.key==='Enter'){addMatrixItem('${quad}')}"/><button class="btn secondary" onclick="addMatrixItem('${quad}')">Add</button></div>
+    ${items.length?items.map(it=>`<label class="check"><input type="checkbox" ${it.done?'checked':''} onchange="toggleMatrixItem('${quad}',${it._i})"><span style="${it.done?'text-decoration:line-through;opacity:0.55':''}">${escapeAttr(it.text)}</span><button class="btn secondary" style="margin-left:8px;padding:2px 8px" onclick="deleteMatrixItem('${quad}',${it._i})">✕</button></label>`).join(""):`<div class="matrix-empty small"></div>`}
+  </div>`;
+}
+function brainDumpPriorityPage(){
+  brainDumpMigrate();
+  matrixMigrate();
+  const items=state.brainDump||[];
+  const dayItems=items.filter(it=>(it.day||state.day)===state.day);
+  const unfinished=dayItems.filter(it=>!it.done).length;
+  const matrixItems=Object.values(state.matrix||{}).flat();
+  const matrixDayItemsAll=matrixItems.filter(it=>(it.day||state.day)===state.day);
+  const matrixUnfinished=matrixDayItemsAll.filter(it=>!it.done).length;
+  return `<div class="grid">
+  <div class="card span12"><h2>🧠 Brain dump → 🧭 Priorities</h2><p class="small">Capture everything first, then decide what actually matters. Unfinished items can be carried forward without losing their original day.</p>
+    <div class="task-transfer"><button class="btn secondary transfer-btn" onclick="transferBrainDumpToNextDay()">➡️ Transfer</button></div>
+    <textarea id="bdInput" placeholder="What's on your mind? Task, idea, worry, reminder, person to contact…"></textarea>
+    <div class="row" style="margin-top:8px"><select id="bdCategory" style="flex:1">${brainDumpCategories.map(c=>`<option>${c}</option>`).join("")} </select><button class="btn" onclick="addBrainDump()">+ Add to brain dump</button></div>
+  </div>
+  <div class="card span12"><h3>📥 Captured thoughts</h3><p class="small">Day ${state.day} · Completed thoughts stay on this day. Only unfinished thoughts move when you use the transfer button.</p>
+    <div class="grid" style="margin-top:12px">
+    ${brainDumpCategories.map(cat=>{
+      const catItems=items.map((it,i)=>({...it,_i:i})).filter(it=>(it.day||state.day)===state.day && it.category===cat);
+      return `<div class="card span6" style="min-height:130px"><h4 style="margin:0 0 10px">${cat}</h4>${catItems.length?catItems.map(it=>`<div class="check" style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding:8px 0"><label style="display:flex;align-items:flex-start;gap:8px;flex:1;cursor:pointer"><input type="checkbox" ${it.done?'checked':''} onchange="toggleBrainDump(${it._i})" style="margin-top:4px"><div><div class="small">${new Date(it.date).toLocaleString(undefined,{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"})}</div><div style="${it.done?'text-decoration:line-through;opacity:0.55':''}">${escapeAttr(it.text)}</div></div></label><button class="btn secondary" onclick="deleteBrainDump(${it._i})">✕</button></div>`).join(""):`<p class="small">Nothing here yet.</p>`}</div>`;
+    }).join("")}
+    </div>
+  </div>
+  <div class="card span12 matrix-header"><h3>🧭 Priority matrix</h3><p class="small">Use the same daily workflow: add items, tick them off, and carry only unfinished items to the next day.</p>
+    <div class="task-transfer"><button class="btn secondary transfer-btn" onclick="transferMatrixToNextDay()">➡️ Transfer</button></div>
+  </div>
+  <div class="grid matrix-grid span12">${Object.keys(matrixLabels).map(matrixQuadrantHtml).join("")}</div>
+  <div class="card span12"><h3>📝 Notes</h3>
+    <textarea id="dayNotes" placeholder="Write your notes here…" oninput="saveNote('day',this.value)">${escapeAttr((state.notes&&state.notes.day&&state.notes.day[state.day])||"")}</textarea>
+  </div>
+  </div>`;
+}
+
+function carePage(){
+ const day=state.day;
+ const face=[
+ "AM: gentle cleanse/rinse → Deconstruct 10% niacinamide + alpha arbutin* → moisturiser → SPF 30–50.",
+ "PM: cleanse → azelaic acid 20% → moisturiser.",
+ "If your skin is calm after several days, keep the above simple routine and introduce tretinoin on selected nights only; do not stack it with azelaic acid at first.",
+ "Tretinoin 0.05%: pea-sized amount to completely dry skin, 2 nights/week initially (for example Day 2 & Day 5), then increase slowly only if tolerated. Moisturiser before/after if needed.",
+ "Recovery night: cleanse + moisturiser only."
+ ];
+ const f=face[(day-1)%face.length];
+ return `<div class="grid">
+ <div class="card span12"><h2>🧴 Day ${day} — Care plan</h2><div class="alert"><b>Important:</b> I can structure your routine, but prescription tretinoin 0.05% should follow your prescriber/dermatologist's directions. Tretinoin can irritate skin, increases sun sensitivity, and should not be used during pregnancy unless specifically advised by a clinician. Patch-test/introduce actives slowly and stop if you develop significant irritation.</div></div>
+ <div class="card span6"><h3>☀️ Face — morning</h3>${check("care","AM: cleanse")}${check("care","AM: treatment (niacinamide/alpha arbutin)")}${check("care","AM: moisturiser")}${check("care","AM: SPF 30–50")}<p class="small">${f}</p></div>
+ <div class="card span6"><h3>🌙 Face — night</h3>${check("care","PM: cleanse")}${check("care","PM: treatment (azelaic acid / tretinoin as scheduled)")}${check("care","PM: moisturiser")}<p class="small">${day%2===0 ? "Tretinoin night: cleanse → dry fully → pea-sized tretinoin → moisturiser. Keep it simple." : "Recovery night: cleanse → moisturiser. No need to use every active every day."}</p></div>
+ <div class="card span12"><h3>🗓️ Weekly grooming plan</h3><p class="small">Hair (oil, wash, mask, scalp scrub), nails, feet, waxing, underarm and bikini — spread across the week so no single day is overloaded. Today is highlighted.</p><div class="grid">${groomingWeeklyHtml()}</div></div>
+ <div class="card span12"><h3>📅 Hair &amp; body rhythm</h3><p>Use your scalp — not a rigid calendar — to decide wash frequency. A common starting point is <b>2–3 hair washes/week</b>, adjusted for oiliness, sweat, dandruff or dryness. Waxing/threading and bikini grooming are shown weekly here as a check-in prompt; do them on your own actual frequency (commonly every 2–4 weeks), not necessarily every single week.</p></div>
+ </div>`;
+}
+function matchWords(text){return text.toLowerCase().split(/[^a-z]+/).filter(w=>w.length>2)}
+function suggestedMealsHtml(){
+ const have=Object.keys(state.pantry).filter(k=>state.pantry[k]);
+ if(have.length===0) return `<p class="small">Select what you have in the pantry above to see matching meal ideas here.</p>`;
+ const haveWords=have.flatMap(matchWords);
+ let out="";
+ for(const [group,items] of Object.entries(meals)){
+  const matches=items.filter(x=>{const w=x.toLowerCase();return haveWords.some(hw=>w.includes(hw))});
+  if(matches.length) out+=`<p><b>${group}:</b> ${matches.join(" · ")}</p>`;
+ }
+ return out||`<p class="small">No close matches yet — try selecting a few more staples (rice, dal, eggs, vegetables).</p>`;
+}
+function allBaseCategories(){
+  return Object.keys(shoppingCatalog).concat(state.customCategories||[]);
+}
+function allCatalogItems(){
+  const cats={...shoppingCatalog};
+  (state.customCategories||[]).forEach(c=>cats[c]=[]);
+  (state.customItems||[]).forEach(x=>{
+    const cat=state.itemCategories[x]||"My items";
+    cats[cat]=cats[cat]||[];
+    if(!cats[cat].includes(x)) cats[cat].push(x);
+  });
+  return Object.values(cats).flat();
+}
+function escapeAttr(v){return String(v).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/'/g,"&#39;");}
+function addCategory(){
+  const input=document.getElementById("newCategory");
+  const val=(input?.value||"").trim();
+  if(!val)return;
+  const exists=allBaseCategories().some(x=>x.toLowerCase()===val.toLowerCase());
+  if(!exists) state.customCategories.push(val);
+  input.value="";
+  save();
+}
+function removeCategory(cat){
+  if(!state.customCategories.includes(cat)) return;
+  const fallback="My items";
+  Object.keys(state.itemCategories).forEach(x=>{if(state.itemCategories[x]===cat)state.itemCategories[x]=fallback;});
+  if(!state.customCategories.includes(fallback))state.customCategories.push(fallback);
+  state.customCategories=state.customCategories.filter(x=>x!==cat);
+  save();
+}
+function renameCategory(oldName){
+  const val=((window.prompt(`Rename category "${oldName}" to:`,oldName))||"").trim();
+  if(!val||val===oldName)return;
+  const clash=allBaseCategories().some(c=>c.toLowerCase()===val.toLowerCase()&&c.toLowerCase()!==oldName.toLowerCase());
+  if(clash){alert(`A category named "${val}" already exists.`);return;}
+  Object.keys(state.itemCategories).forEach(item=>{if(state.itemCategories[item]===oldName)state.itemCategories[item]=val;});
+  if(Object.keys(shoppingCatalog).includes(oldName)){
+    shoppingCatalog[oldName].forEach(it=>{if(!state.itemCategories[it])state.itemCategories[it]=val;});
+  }
+  if(state.customCategories.includes(oldName)){
+    state.customCategories=state.customCategories.map(c=>c===oldName?val:c);
+  }else if(!state.customCategories.includes(val)){
+    state.customCategories.push(val);
+  }
+  save();
+}
+let dragItemName=null;
+function handleItemDragStart(ev,item){
+  dragItemName=item;
+  try{ev.dataTransfer.setData("text/plain",item);}catch(e){}
+  if(ev.dataTransfer)ev.dataTransfer.effectAllowed="move";
+}
+function handleCategoryDrop(ev,cat){
+  ev.preventDefault();
+  if(ev.currentTarget)ev.currentTarget.classList.remove("drag-over");
+  let item=dragItemName;
+  try{const dt=ev.dataTransfer.getData("text/plain");if(dt)item=dt;}catch(e){}
+  dragItemName=null;
+  if(!item)return;
+  moveItem(item,cat);
+}
+function unifiedShoppingData(){
+  const order=[];
+  const itemsByCategory={};
+  function ensureCat(c){if(!(c in itemsByCategory)){itemsByCategory[c]=[];order.push(c);}}
+  Object.keys(shoppingCatalog).forEach(ensureCat);
+  (state.customCategories||[]).forEach(ensureCat);
+  Object.entries(shoppingCatalog).forEach(([cat,items])=>{
+    items.forEach(it=>{
+      const actual=state.itemCategories[it]||cat;
+      ensureCat(actual);
+      if(!itemsByCategory[actual].includes(it))itemsByCategory[actual].push(it);
+    });
+  });
+  (state.customItems||[]).forEach(it=>{
+    const actual=state.itemCategories[it]||"My items";
+    ensureCat(actual);
+    if(!itemsByCategory[actual].includes(it))itemsByCategory[actual].push(it);
+  });
+  return {order,itemsByCategory};
+}
+function moveItem(item,cat){
+  if(!cat)return;
+  state.itemCategories[item]=cat;
+  if(!state.customCategories.includes(cat) && !Object.keys(shoppingCatalog).includes(cat)) state.customCategories.push(cat);
+  save();
+}
+function addCustomItem(){
+  const input=document.getElementById("newItem");
+  const val=(input?.value||"").trim();
+  const cat=document.getElementById("newItemCategory")?.value||"My items";
+  const msgEl=document.getElementById("addItemMsg");
+  if(!val)return;
+  const all=allCatalogItems();
+  const exact=all.find(it=>it.toLowerCase()===val.toLowerCase());
+  if(exact){
+    if(msgEl)msgEl.textContent=`Already on the list: "${exact}" — use the category controls instead.`;
+    input.value="";
+    return;
+  }
+  if(!state.customCategories.includes(cat) && !Object.keys(shoppingCatalog).includes(cat)) state.customCategories.push(cat);
+  state.customItems.push(val);
+  state.itemCategories[val]=cat;
+  if(msgEl)msgEl.textContent=`Added "${val}" to ${cat}. You can move or delete it below.`;
+  input.value="";
+  save();
+}
+function toggleCustomDelete(item){state.selectedCustomItems[item]=!state.selectedCustomItems[item];save();}
+function deleteSelectedCustomItems(){
+  const selected=new Set(Object.keys(state.selectedCustomItems||{}).filter(k=>state.selectedCustomItems[k]));
+  if(!selected.size)return;
+  state.customItems=state.customItems.filter(item=>{
+    if(!selected.has(item))return true;
+    delete state.itemCategories[item]; delete state.pantry[item]; delete state.shopping[item]; return false;
+  });
+  state.selectedCustomItems={}; save();
+}
+function customItemManagerHtml(){
+  if(!state.customItems.length)return `<p class="small">No custom items added yet.</p>`;
+  const cats=allBaseCategories();
+  const selectedCount=Object.values(state.selectedCustomItems||{}).filter(Boolean).length;
+  return `<div class="custom-item-list">${state.customItems.map(item=>`<div class="custom-item-row"><input type="checkbox" ${state.selectedCustomItems[item]?'checked':''} onchange="toggleCustomDelete('${escapeAttr(item)}')" aria-label="Select ${escapeAttr(item)}"><span class="custom-item-name" title="${escapeAttr(item)}">${escapeAttr(item)}</span><select onchange="moveItem('${escapeAttr(item)}',this.value)" aria-label="Category for ${escapeAttr(item)}">${cats.map(c=>`<option value="${escapeAttr(c)}" ${(state.itemCategories[item]||"My items")===c?'selected':''}>${escapeAttr(c)}</option>`).join("")}</select></div>`).join("")}</div><div class="row" style="margin-top:10px"><button class="btn secondary" onclick="deleteSelectedCustomItems()" ${selectedCount?'':'disabled'}>🗑️ Delete selected${selectedCount?` (${selectedCount})`:''}</button><span class="small">Tick multiple items, then delete them all at once.</span></div><p class="small">Custom items can be moved into existing categories or your own categories. Built-in supermarket items remain protected.</p>`;
+}
+function pantryChecklist(){
+  const {order,itemsByCategory}=unifiedShoppingData();
+  return order.filter(cat=>(itemsByCategory[cat]||[]).length).map(cat=>{
+    const items=itemsByCategory[cat];
+    return `<div class="card span12"><h4>${escapeAttr(cat)}</h4><div class="foodgrid">${items.map(it=>`<label class="food"><input type="checkbox" ${state.pantry[it]?'checked':''} onchange="toggleSet(state.pantry,'${escapeAttr(it)}')">${escapeAttr(it)}</label>`).join("")}</div></div>`;
+  }).join("");
+}
+let shopPage=0;
+function shopSetPage(p){shopPage=p;if(currentTab==="Dashboard"){render()}else{tab(currentTab)}}
+function shoppingChecklist(){
+  const {order,itemsByCategory}=unifiedShoppingData();
+  const perPage=4;
+  const totalPages=Math.max(1,Math.ceil(order.length/perPage));
+  if(shopPage>=totalPages)shopPage=totalPages-1;
+  if(shopPage<0)shopPage=0;
+  const pageCats=order.slice(shopPage*perPage,shopPage*perPage+perPage);
+  const cards=pageCats.map(cat=>{
+    const items=itemsByCategory[cat]||[];
+    return `<div class="card span6 cat-drop" ondragover="event.preventDefault();this.classList.add('drag-over')" ondragleave="this.classList.remove('drag-over')" ondrop="handleCategoryDrop(event,'${escapeAttr(cat)}')">
+      <div class="cat-header"><h4>${escapeAttr(cat)}</h4><button type="button" class="btn secondary cat-edit-btn" onclick="renameCategory('${escapeAttr(cat)}')" title="Rename this category">✏️ Rename</button></div>
+      <div class="custom-item-list">${items.length?items.map(it=>`<div class="custom-item-row shop-item-row" style="grid-template-columns:auto minmax(0,1fr)" draggable="true" ondragstart="handleItemDragStart(event,'${escapeAttr(it)}')"><input type="checkbox" ${state.shopping[it]?'checked':''} onchange="toggleSet(state.shopping,'${escapeAttr(it)}')" aria-label="Buy ${escapeAttr(it)}"><span class="custom-item-name" title="${escapeAttr(it)}"><span class="drag-handle">⠿</span> ${escapeAttr(it)}</span></div>`).join(""):`<p class="small" style="padding:4px 2px">Drag an item here to add it to this category.</p>`}</div>
+    </div>`;
+  }).join("");
+  const pager=totalPages>1?`<div class="row shop-pager" style="justify-content:center;align-items:center;gap:6px;margin-top:14px">
+    <button class="btn secondary" onclick="shopSetPage(${shopPage-1})" ${shopPage===0?"disabled":""}>‹ Prev</button>
+    ${Array.from({length:totalPages},(_,i)=>`<button class="btn ${i===shopPage?"":"secondary"}" style="min-width:36px;padding:8px 10px" onclick="shopSetPage(${i})">${i+1}</button>`).join("")}
+    <button class="btn secondary" onclick="shopSetPage(${shopPage+1})" ${shopPage===totalPages-1?"disabled":""}>Next ›</button>
+  </div><p class="small" style="text-align:center;margin-top:4px">Page ${shopPage+1} of ${totalPages} — ${order.length} categories total</p>`:"";
+  return `<div class="grid">${cards}</div>${pager}`;
+}
+function shoppingSummaryHtml(){
+  const {order,itemsByCategory}=unifiedShoppingData();
+  const selected=[];
+  order.forEach(cat=>{(itemsByCategory[cat]||[]).forEach(it=>{if(state.shopping[it])selected.push(it);});});
+  if(!selected.length) return `<p class="small">No items ticked yet — tick items below and they'll show up here as your buy list.</p>`;
+  return `<div class="buy-summary-grid">${selected.map(it=>`<div class="custom-item-row" style="grid-template-columns:auto minmax(0,1fr)"><input type="checkbox" checked onchange="toggleSet(state.shopping,'${escapeAttr(it)}')" aria-label="Remove ${escapeAttr(it)} from buy list"><span class="custom-item-name">${escapeAttr(it)}</span></div>`).join("")}</div><p class="small">${selected.length} item${selected.length===1?'':'s'} to buy. Untick here (or below) to remove it from the list.</p>`;
+}
+function digestiveDrinksHtml(){
+ const today=weekdayForDay(state.day);
+ return `<div class="foodgrid">${digestiveDrinksByWeekday.map(row=>{
+  const isToday=row.day===today; const k=key("drink",row.day);
+  return `<label class="food" style="${isToday?'outline:2px solid var(--accent)':''}"><input type="checkbox" ${state.done[k]?'checked':''} onchange="toggle('drink','${row.day}')"><b>${row.day}${isToday?" (today)":""}:</b> ${row.name}<br><span class="small">${row.benefit}</span></label>`;
+ }).join("")}</div><p class="small">Optional, unsweetened, and only if your digestion tolerates them — not proven "cortisol reset" cures.</p>`;
+}
+
+const nutritionDB={
+  "egg":{kcal:78,protein:6.3,unit:"1 large egg"},
+  "eggs":{kcal:78,protein:6.3,unit:"1 large egg"},
+  "rice":{kcal:205,protein:4.3,unit:"1 cup cooked"},
+  "brown rice":{kcal:215,protein:5,unit:"1 cup cooked"},
+  "dal":{kcal:230,protein:18,unit:"1 cup cooked"},
+  "lentils":{kcal:230,protein:18,unit:"1 cup cooked"},
+  "chickpeas":{kcal:269,protein:14.5,unit:"1 cup cooked"},
+  "rajma":{kcal:225,protein:15,unit:"1 cup cooked"},
+  "tofu":{kcal:145,protein:17,unit:"200 g"},
+  "paneer":{kcal:265,protein:18,unit:"100 g"},
+  "greek yoghurt":{kcal:130,protein:12,unit:"170 g"},
+  "plain yoghurt":{kcal:100,protein:9,unit:"170 g"},
+  "milk":{kcal:120,protein:8,unit:"1 cup"},
+  "oats":{kcal:150,protein:5,unit:"40 g"},
+  "banana":{kcal:105,protein:1.3,unit:"1 medium"},
+  "apple":{kcal:95,protein:0.5,unit:"1 medium"},
+  "bread":{kcal:90,protein:4,unit:"1 slice"},
+  "wholegrain bread":{kcal:90,protein:4,unit:"1 slice"},
+  "roti":{kcal:120,protein:4,unit:"1 medium"},
+  "atta":{kcal:120,protein:4,unit:"1 roti"},
+  "dosa":{kcal:170,protein:4,unit:"1 medium plain dosa"},
+  "idli":{kcal:60,protein:2,unit:"1 idli"},
+  "sambar":{kcal:120,protein:6,unit:"1 cup"},
+  "poha":{kcal:250,protein:5,unit:"1 cup cooked"},
+  "upma":{kcal:250,protein:7,unit:"1 cup"},
+  "quinoa":{kcal:222,protein:8,unit:"1 cup cooked"},
+  "pasta":{kcal:200,protein:7,unit:"1 cup cooked"},
+  "potato":{kcal:160,protein:4,unit:"1 medium"},
+  "sweet potato":{kcal:180,protein:4,unit:"1 medium"},
+  "broccoli":{kcal:55,protein:4,unit:"1 cup"},
+  "spinach":{kcal:40,protein:5,unit:"1 cup cooked"},
+  "vegetables":{kcal:80,protein:3,unit:"1 cup mixed"},
+  "chicken":{kcal:230,protein:43,unit:"150 g cooked"},
+  "fish":{kcal:220,protein:35,unit:"150 g cooked"},
+  "prawns":{kcal:150,protein:32,unit:"150 g cooked"},
+  "peanuts":{kcal:170,protein:7,unit:"30 g"},
+  "peanut butter":{kcal:95,protein:4,unit:"1 tbsp"},
+  "hummus":{kcal:70,protein:2,unit:"2 tbsp"},
+  "oil":{kcal:120,protein:0,unit:"1 tbsp"},
+  "ghee":{kcal:120,protein:0,unit:"1 tbsp"},
+  "biscuit":{kcal:50,protein:0.7,unit:"1 small biscuit"},
+  "biscuits":{kcal:50,protein:0.7,unit:"1 small biscuit"},
+  "cracker":{kcal:35,protein:0.7,unit:"1 cracker"},
+  "crackers":{kcal:35,protein:0.7,unit:"1 cracker"},
+  "digestive":{kcal:70,protein:1,unit:"1 biscuit"}
+};
+function nutritionEstimate(text){
+  const t=(text||"").toLowerCase();
+  let kcal=0, protein=0, hits=[];
+  const keys=Object.keys(nutritionDB).sort((a,b)=>b.length-a.length);
+  keys.forEach(k=>{
+    if(t.includes(k)){
+      const n=nutritionDB[k];
+      kcal+=n.kcal; protein+=n.protein; hits.push(`${k}: ~${n.kcal} kcal, ${n.protein} g protein (${n.unit})`);
+    }
+  });
+  if(!hits.length)return {kcal:0,protein:0,hits:[]};
+  return {kcal:Math.round(kcal),protein:Number(protein.toFixed(1)),hits};
+}
+const recipeLibrary={
+"Idli":"2 cups idli rice, 1 cup urad dal, 1/2 tsp fenugreek seeds, salt, water (soak rice+dal separately, grind, ferment overnight, steam in idli moulds)",
+"Plain dosa":"2 cups dosa rice, 1/2 cup urad dal, 1/4 tsp fenugreek seeds, salt, water, oil for the tawa (soak, grind, ferment, spread thin on a hot tawa)",
+"Sambar":"1/2 cup toor dal, mixed vegetables (drumstick, carrot, brinjal, pumpkin), 1 tbsp sambar powder, tamarind pulp, 1 onion, 1 tomato, curry leaves, mustard seeds, oil, salt",
+"Rasam":"1/4 cup toor dal, 2 tomatoes, tamarind pulp, rasam powder, garlic, curry leaves, mustard seeds, cumin, coriander leaves, ghee, salt",
+"Curd rice":"1 cup cooked rice, 1 cup plain yoghurt, splash of milk, mustard seeds, curry leaves, green chilli, ginger, grated carrot (optional), salt",
+"Vegetable poriyal":"2 cups chopped vegetables (beans, cabbage or carrot), grated coconut, mustard seeds, urad dal, curry leaves, green chilli, oil, salt",
+"Upma":"1 cup roasted semolina (rava), 2 cups water, onion, green chilli, mustard seeds, urad dal, curry leaves, ginger, oil, salt",
+"Pongal":"1/2 cup rice, 1/4 cup moong dal, cumin, black pepper, ginger, curry leaves, cashews, ghee, salt",
+"Coconut chutney":"1 cup grated coconut, roasted gram dal, green chilli, ginger, mustard seeds, urad dal, curry leaves, oil, salt",
+"Lemon rice":"2 cups cooked rice, juice of 1 lemon, turmeric, mustard seeds, urad dal, chana dal, peanuts, green chilli, curry leaves, oil, salt",
+"Chana masala":"1.5 cups boiled chickpeas, 1 onion, 2 tomatoes, ginger-garlic paste, chana masala powder, oil, coriander leaves, salt",
+"Vegetable pulao":"1 cup basmati rice, mixed vegetables (peas, carrot, beans), 1 onion, whole spices (bay leaf, cinnamon, cloves), ghee/oil, salt"
+};
+function useLibraryRecipe(){
+  const sel=document.getElementById("recipeLibrarySelect");
+  const name=sel&&sel.value;
+  if(!name)return;
+  const nameEl=document.getElementById("recipeName"), ingEl=document.getElementById("recipeIngredients");
+  if(nameEl)nameEl.value=name;
+  if(ingEl)ingEl.value=recipeLibrary[name];
+}
+function saveRecipe(){
+  const name=(document.getElementById("recipeName")?.value||"").trim()||"My recipe";
+  const text=(document.getElementById("recipeIngredients")?.value||"").trim();
+  const link=(document.getElementById("recipeLink")?.value||"").trim();
+  if(!text && !link)return;
+  const n=nutritionEstimate(text);
+  state.recipeLog[name]={name,ingredients:text,link,kcal:n.kcal,protein:n.protein,updated:new Date().toISOString()};
+  save();
+}
+function deleteRecipe(name){delete state.recipeLog[name];save();}
+function recipeAnalyzerHtml(){
+  const recipes=Object.values(state.recipeLog||{});
+  return `<div class="card span12"><h3>🧮 Recipe calorie + protein calculator</h3>
+    <p class="small">Paste the recipe ingredients and, optionally, the website link. The dashboard gives an <b>approximate</b> estimate from its built-in food reference; it cannot reliably read every website or brand/portion size. For accuracy, enter quantities and use the nutrition label when available.</p>
+    <label class="small">Or pick a common South Indian recipe to auto-fill its ingredients (you can edit before saving)</label>
+    <div class="row" style="margin-bottom:8px"><select id="recipeLibrarySelect" style="flex:1"><option value="">Choose a recipe…</option>${Object.keys(recipeLibrary).map(n=>`<option value="${escapeAttr(n)}">${escapeAttr(n)}</option>`).join("")}</select><button class="btn secondary" onclick="useLibraryRecipe()">Use this</button></div>
+    <input type="text" id="recipeName" placeholder="Recipe name" style="margin-bottom:8px">
+    <input type="text" id="recipeLink" placeholder="Recipe website link (optional)" style="margin-bottom:8px">
+    <textarea id="recipeIngredients" placeholder="Paste ingredients, e.g. 2 eggs, 1 cup rice, 1 cup dal, 1 tbsp oil..."></textarea>
+    <div class="row" style="margin-top:8px"><button class="btn" onclick="saveRecipe()">Calculate & save recipe</button></div>
+    ${recipes.length?`<div style="margin-top:12px">${recipes.map(r=>`<div class="food"><b>${escapeAttr(r.name)}</b> — ~${r.kcal} kcal · ${r.protein} g protein <button class="btn secondary" onclick="deleteRecipe('${escapeAttr(r.name)}')">Delete</button><div class="small">${r.link?`Link: ${escapeAttr(r.link)}`:""}<br>${r.ingredients?escapeAttr(r.ingredients).slice(0,220):""}</div></div>`).join("")}</div>`:""}
+  </div>`;
+}
+const activityMultipliers={"Sedentary":1.2,"Light":1.375,"Moderate":1.55,"Active":1.725,"Very active":1.9};
+function bmiCategory(bmi){
+  if(!bmi||bmi==="—")return "";
+  const n=Number(bmi);
+  if(n<18.5)return "Underweight";
+  if(n<25)return "Normal range";
+  if(n<30)return "Overweight";
+  return "Obese";
+}
+function bodyProfileHtml(){
+  const p=state.bodyProfile||{};
+  const h=Number(p.height)||0,w=Number(p.weight)||0,age=Number(p.age)||0;
+  const activity=p.activity||"Moderate";
+  let bmi=h&&w?(w/((h/100)*(h/100))).toFixed(1):"—";
+  let bmr=age&&h&&w?(10*w+6.25*h-5*age-161):0;
+  let tdee=bmr?Math.round(bmr*(activityMultipliers[activity]||1.55)):0;
+  let target=tdee?Math.max(Math.round(bmr*1.1),tdee-500):0;
+  return `<div class="card span12"><h3>📏 Body profile → calorie & protein target</h3>
+    <div class="business-metrics">
+      <label class="small">Height (cm)<input type="number" min="100" max="230" value="${p.height||""}" onchange="state.bodyProfile.height=this.value;save()"></label>
+      <label class="small">Weight (kg)<input type="number" min="30" max="250" step="0.1" value="${p.weight||""}" onchange="state.bodyProfile.weight=this.value;save()"></label>
+      <label class="small">Age<input type="number" min="18" max="100" value="${p.age||""}" onchange="state.bodyProfile.age=this.value;save()"></label>
+      <label class="small">Activity<select onchange="state.bodyProfile.activity=this.value;save()">${Object.keys(activityMultipliers).map(a=>`<option ${activity===a?"selected":""}>${a}</option>`).join("")}</select></label>
+    </div>
+    <div class="business-kpis" style="margin-top:10px">
+      <div class="business-kpi"><b>${bmi}</b><span>BMI (screening only) — ${bmiCategory(bmi)}</span></div>
+      <div class="business-kpi"><b>${target||"—"}</b><span>Starting kcal/day estimate</span></div>
+      <div class="business-kpi"><b>${w?Math.round(w*1.2)+"–"+Math.round(w*1.6):"—"}</b><span>Protein g/day range</span></div>
+    </div>
+    <p class="small">BMI categories (WHO general-population screening only, not diagnostic): under 18.5 underweight, 18.5–24.9 normal, 25–29.9 overweight, 30+ obese. The calorie estimate uses activity level to estimate maintenance calories (TDEE), then targets a moderate ~500 kcal/day deficit for gradual weight loss. This is a starting point, not a medical prescription — adjust based on progress, hunger, energy and clinician/dietitian advice.</p>
+  </div>`;
+}
+function todaysProgressHtml(){
+  const r=(state.records&&state.records[state.day])||{};
+  return `<div class="card span12"><h3>📈 Today's progress</h3><div class="business-metrics">
+    <label class="small">Today's weight (kg)<input type="number" step="0.1" min="30" onchange="record('weight',this.value)" value="${r.weight||""}"></label>
+    <label class="small">Waist (cm)<input type="number" step="0.1" min="30" onchange="record('waist',this.value)" value="${r.waist||""}"></label>
+    <label class="small">Pain 0–10<input type="number" min="0" max="10" onchange="record('pain',this.value)" value="${r.pain||""}"></label>
+    <label class="small">Inflammation/bloating 0–10<input type="number" min="0" max="10" onchange="record('inflammation',this.value)" value="${r.inflammation||""}"></label>
+  </div><p class="small">Track trends rather than demanding a zero score every day. A sudden increase, severe pain, swelling, fever, or other concerning symptom warrants medical advice.</p></div>`;
+}
+function foodPage(){
+  const r=(state.records&&state.records[state.day])||{};
+  let out=`<div class="grid"><div class="card span12"><h2>🍲 Day ${state.day} — Food system</h2><p>Build meals around <b>protein + vegetables/fruit + a sensible carbohydrate + healthy fat</b>. No detoxes, starvation or supplement dependence.</p><div class="alert">Goal for these 30 days: support steady fat loss, energy, recovery and comfort. Pain/inflammation cannot be guaranteed to become zero; persistent or worsening pain should be assessed by a clinician.</div></div>`;
+  out+=`<div class="card span6"><h3>💧 Water intake</h3>${waterTracker()}<p class="small">Aim for roughly 8 cups/day, more if it's hot or you're active.</p></div>`;
+  out+=`<div class="card span6"><h3>📊 Today's nutrition log</h3>
+    <label class="small">Calories eaten<input type="number" min="0" value="${r.calories||""}" placeholder="e.g. 1600" onchange="record('calories',this.value)"></label>
+    <label class="small">Protein eaten (g)<input type="number" min="0" value="${r.protein||""}" placeholder="e.g. 90" onchange="record('protein',this.value)"></label>
+    <p class="small">Use the recipe calculator below, food labels, or your own portions. The daily totals stay attached to Day ${state.day}.</p>
+  </div>`;
+  const foodOptionsAll={...meals,...southIndianDishes,"🔥 Weight-loss Focused Picks":weightLossPicks};
+  out+=`<div class="card span12 food-choice-card"><h3>🍛 Food Choices</h3><p class="small food-choice-intro">Each meal type is listed once. Tick what you plan to eat or have eaten today for Day ${state.day}. Items marked "Weight-loss pick" are lower-calorie/higher-protein swaps.</p>
+    <div class="food-choice-grid">${Object.entries(foodOptionsAll).map(([cat,items])=>`<section class="food-choice-section"><h4>${escapeAttr(cat)}</h4><div class="food-choice-items">${items.map(it=>{const id=("f"+cat+it).replace(/[^a-z0-9]/gi,"");return `<label class="food-choice-item"><input type="checkbox" ${state.done[key("food",id)]?'checked':''} onchange="toggle('food','${id}')"><span>${escapeAttr(it)}</span></label>`}).join("")}</div></section>`).join("")}</div>
+  </div>`;
+  out+=recipeAnalyzerHtml();
+  out+=`<div class="card span12"><h3>🎯 Weight-loss meal rule</h3><p>Pick <b>one</b> breakfast + one lunch + one dinner + 0–2 snacks. Keep the plate mostly vegetables, include a palm-sized protein source, and choose a moderate rice/roti/oats/grain portion. Avoid stacking multiple calorie-dense sides in the same meal.</p></div>`;
+  out+=`<div class="card span12"><h3>🥤 Digestion-friendly drinks — weekly list</h3>${digestiveDrinksHtml()}</div>`;
+  out+=`<div class="card span12"><h3>🌿 Foods to prioritise</h3><p>Vegetables, fruit, legumes, eggs, fish/chicken/tofu/paneer, plain yoghurt, oats/whole grains, nuts/seeds, and mostly home-cooked meals.</p><h3>Reduce rather than ban</h3><p>Highly processed snacks, sugary drinks, frequent takeaway, oversized portions, and alcohol. Weight loss comes primarily from a sustainable energy deficit—not from “cortisol foods” or a detox.</p></div>`;
+  out+="</div>";
+  return out;
+}
+
+function prepPage(){
+  const cats=allBaseCategories();
+  return `<div class="grid">
+  <div class="card span12"><h2>🧺 Grocery — Your Kitchen Base</h2><p class="small">Grocery is now for ingredients, categories, pantry and supermarket planning. South Indian dishes have been moved to Food so you can rotate them by day.</p></div>
+  <div class="card span12"><h3>🧾 Your buy list</h3><p class="small">Everything you've ticked in the shopping list below, side by side.</p>${shoppingSummaryHtml()}</div>
+  <div class="card span12"><h3>🛒 Weekly supermarket list</h3><p class="small">Tick items you need to buy this week. Rename any category with ✏️ Rename, and drag an item (⠿) onto another category card to move it there.</p>${shoppingChecklist()}
+    <label class="small">Other items to note</label><textarea id="shoppingNotes" placeholder="Anything else to pick up…" oninput="state.shoppingNotes=this.value;persist()">${state.shoppingNotes||""}</textarea></div>
+  <div class="card span12"><h3>➕ Add an item</h3><p class="small">Add vegetables, fruit, protein, grains, dairy, spices, snacks, biscuits or anything else. Every item — including built-in ones — can be moved or renamed using the category controls above.</p>
+    <div class="row"><input type="text" id="newItem" placeholder="e.g. Ragi flour, Almond milk, Marie biscuits…" style="flex:1" onkeydown="if(event.key==='Enter'){addCustomItem()}">
+    <select id="newItemCategory" style="min-width:180px">${cats.map(c=>`<option value="${escapeAttr(c)}" ${c==="My items"?"selected":""}>${escapeAttr(c)}</option>`).join("")}</select>
+    <button class="btn" onclick="addCustomItem()">Add item</button></div><p class="small" id="addItemMsg"></p>
+  </div>
+  <div class="card span12"><h3>🗂️ Add your own category</h3><div class="row"><input type="text" id="newCategory" placeholder="e.g. South Indian pantry, Work snacks, Baking" style="flex:1" onkeydown="if(event.key==='Enter'){addCategory()}"><button class="btn" onclick="addCategory()">+ Category</button></div>
+    ${(state.customCategories||[]).map(c=>`<span class="badge" style="margin:8px 6px 0 0">${escapeAttr(c)} <button class="btn secondary" onclick="renameCategory('${escapeAttr(c)}')" title="Rename">✏️</button> <button class="btn secondary" onclick="removeCategory('${escapeAttr(c)}')">×</button></span>`).join("")}
+  </div>
+  <div class="card span12"><h3>🧺 What can I cook? (select what's in your kitchen)</h3><div class="grid">${pantryChecklist()}</div><div class="card span12" style="margin-top:10px"><h4>Matching meal ideas</h4>${suggestedMealsHtml()}</div></div>
+  <div class="card span12"><h3>🛠️ Manage my added items</h3><p class="small">Tick one or several added items, move them to a category if needed, then delete the selected items together.</p>${customItemManagerHtml()}</div>
+  </div>`;
+}
+
+function moodOptions(){return `<option value="">Choose…</option><option>Low</option><option>Anxious</option><option>Irritable</option><option>Neutral</option><option>Calm</option><option>Happy</option><option>Energised</option>`}
+function journalPage(){
+  return `<div class="grid">
+  <div class="card span12"><h2>📓 My Journal — Day ${state.day}</h2>
+  <p class="small">Your personal space: cycle tracking, morning thoughts, emotions through the day, and daily gratitude.</p>
+  </div>
+  <div class="card span6"><h3>📅 Cycle tracking</h3>
+  <label class="small">Cycle day</label>
+  <input type="number" min="1" max="60" placeholder="e.g. 12" id="cycle" onchange="record('cycle',this.value)">
+  <label class="small">First day of latest period</label>
+  <input type="text" placeholder="Optional — e.g. 20 Aug 2026" id="periodstart" onchange="record('periodstart',this.value)">
+  <p class="small">Estimated phase: <b id="cyclePhase">Enter cycle day</b></p>
+  <p class="small">Ovulation expectation: <b id="ovulationExpectation">Enter cycle day and your usual cycle length</b></p>
+  <p class="small">Use this as a tracking guide, not a diagnosis — phase and ovulation timing are estimates and depend on cycle length and variability.</p>
+  </div>
+  <div class="card span6"><h3>🌅 Morning journal</h3>
+  <label class="small">How I woke up feeling / today's intention</label>
+  <textarea id="morningJournal" placeholder="How did you wake up? What's your intention for today?" oninput="record('morningJournal',this.value)"></textarea>
+  </div>
+  <div class="card span12"><h3>💭 Emotions journal</h3>
+  <p class="small">A quick check-in through the day.</p>
+  <div class="grid">
+  <div class="card span6"><label class="small">Morning</label><select id="emoMorning" onchange="record('emoMorning',this.value)">${moodOptions()}</select></div>
+  <div class="card span6"><label class="small">Noon</label><select id="emoNoon" onchange="record('emoNoon',this.value)">${moodOptions()}</select></div>
+  <div class="card span6"><label class="small">Evening</label><select id="emoEvening" onchange="record('emoEvening',this.value)">${moodOptions()}</select></div>
+  <div class="card span6"><label class="small">Night</label><select id="emoNight" onchange="record('emoNight',this.value)">${moodOptions()}</select></div>
+  </div>
+  <label class="small">General — anything else about how you felt today</label>
+  <textarea id="emoGeneral" placeholder="Cravings, energy, body sensations, thoughts…" oninput="record('emoGeneral',this.value)"></textarea>
+  </div>
+  <div class="card span12"><h3>🙏 3 things I'm grateful for today</h3>
+  <input type="text" placeholder="1." id="gratitude1" onchange="record('gratitude1',this.value)">
+  <input type="text" placeholder="2." id="gratitude2" onchange="record('gratitude2',this.value)" style="margin-top:8px">
+  <input type="text" placeholder="3." id="gratitude3" onchange="record('gratitude3',this.value)" style="margin-top:8px">
+  </div>
+  </div>`;
+}
+function movementPage(d){
+ return `<div class="grid">
+ ${bodyProfileHtml()}
+ ${todaysProgressHtml()}
+ <div class="card span8"><h2>🚶 Day ${state.day} — Movement + Weight-loss Exercise</h2>
+ <p class="quote">${d[1]}</p>
+ <p class="small">Walking/cardio, yoga/mobility and gradual strength are now together in one movement plan.</p>
+ ${check("move","Warm-up 3–5 min")}${check("move","Main walk / cardio completed")}${check("move","Cool-down / easy stretch")}${check("move","Stopped before pain or exhaustion")}
+ </div>
+ <div class="card span4"><h2>🧘 Yoga & Mobility</h2><p class="small">${d[3]}</p>
+ ${check("yoga","Cat-cow / spinal mobility")}${check("yoga","Child's pose or comfortable rest")}${check("yoga","Hip mobility")}${check("yoga","Gentle chest/shoulder opening")}
+ </div>
+ <div class="card span12"><h3>🔥 Weight-loss movement checklist</h3>
+ <p class="small">Exercise supports weight loss; it does not need to be extreme. Aim for consistency and gradual progression.</p>
+ ${check("weightloss","Warm-up 5 min")}${check("weightloss","Main walk / cardio completed")}${check("weightloss","Strength work completed if scheduled")}${check("weightloss","Cool-down / easy stretch")}${check("weightloss","Kept today's effort sustainable")}${check("weightloss","Stopped before pain or exhaustion")}
+ </div>
+ <div class="card span12"><h3>💪 Strength progression</h3>
+ <p class="small">From Day 9. Keep it controlled and only progress when recovery feels good.</p>
+ ${check("strength","Sit-to-stand — planned sets completed")}${check("strength","Wall push-ups — planned sets completed")}${check("strength","Glute bridges — planned sets completed")}${check("strength","Progressed only if recovery felt good")}${check("strength","No pain / excessive exhaustion")}
+ </div>
+ <div class="card span4"><h3>🎯 Belly / Core</h3>
+ ${check("belly","Dead bug — 8–10 each side")}${check("belly","Bird-dog — 8–10 each side")}${check("belly","Standing knee-to-elbow — 10 each side")}${check("belly","Plank hold — 15–30 sec, easy version on knees if needed")}${check("belly","Pelvic tilts — 10 reps")}
+ </div>
+ <div class="card span4"><h3>💪 Arms</h3>
+ ${check("arms","Wall or knee push-ups — 8–12")}${check("arms","Arm circles — 20 sec forward + back")}${check("arms","Tricep dips on a chair — 8–10")}${check("arms","Water-bottle bicep curls — 10–12")}${check("arms","Overhead press with light weight/bottle — 10")}
+ </div>
+ <div class="card span4"><h3>🦵 Thighs & Glutes</h3>
+ ${check("thighs","Bodyweight squats — 10–12")}${check("thighs","Wall sit — 15–20 sec")}${check("thighs","Standing side leg raises — 10 each side")}${check("thighs","Glute bridge — 10–12")}${check("thighs","Step-ups on a low step/stair — 8 each side")}
+ </div>
+ <div class="card span12"><div class="alert"><b>Remember:</b> spot reduction isn't real. Core, arm and thigh exercises build strength; overall fat loss comes from sustainable nutrition plus walking/cardio and full-body strength.</div></div>
+ </div>`;
+}
+let pomoTimer=null,pomoSeconds=0,pomoMode="work",pomoCycle=0;
+function pomoLen(mode){return mode==="work"?25*60:(mode==="longbreak"?15*60:5*60)}
+function pomoStart(){
+  if(pomoTimer)return;
+  if(pomoSeconds<=0)pomoSeconds=pomoLen(pomoMode);
+  updatePomoDisplay();
+  pomoTimer=setInterval(()=>{
+    pomoSeconds--;
+    updatePomoDisplay();
+    if(pomoSeconds<=0){
+      clearInterval(pomoTimer);pomoTimer=null;
+      if(pomoMode==="work"){
+        pomoCycle++;
+        state.records=state.records||{};state.records[state.day]=state.records[state.day]||{};
+        state.records[state.day].pomodoros=(state.records[state.day].pomodoros||0)+1;
+        persist();
+        const nextMode=(pomoCycle%4===0)?"longbreak":"break";
+        alert("Focus block complete. Time for a "+(nextMode==="longbreak"?"long (15 min)":"short (5 min)")+" break.");
+        pomoMode=nextMode;
+      }else{
+        alert("Break's over. Ready for the next focus block.");
+        pomoMode="work";
+      }
+      pomoSeconds=0;
+      updatePomoDisplay();
+    }
+  },1000);
+}
+function pomoPause(){clearInterval(pomoTimer);pomoTimer=null;}
+function pomoReset(){clearInterval(pomoTimer);pomoTimer=null;pomoMode="work";pomoCycle=0;pomoSeconds=0;updatePomoDisplay();}
+function updatePomoDisplay(){
+  const disp=document.getElementById("pomodoroDisplay");
+  if(!disp)return;
+  const s=pomoSeconds>0?pomoSeconds:pomoLen(pomoMode);
+  disp.textContent=fmt(s);
+  const lbl=document.getElementById("pomodoroLabel");
+  if(lbl)lbl.textContent=pomoMode==="work"?"Focus block":(pomoMode==="longbreak"?"Long break":"Short break");
+  const cnt=document.getElementById("pomodoroCount");
+  if(cnt)cnt.textContent=((state.records&&state.records[state.day]&&state.records[state.day].pomodoros)||0);
+}
+let timer=null,seconds=0;
+function startTimer(min){clearInterval(timer);seconds=min*60;document.getElementById("timer").textContent=fmt(seconds);timer=setInterval(()=>{seconds--;document.getElementById("timer").textContent=fmt(seconds);if(seconds<=0){clearInterval(timer);alert("Focus block complete. Stand up, breathe, and take your planned break.");}},1000)}
+function stopTimer(){clearInterval(timer);seconds=0;if(document.getElementById("timer"))document.getElementById("timer").textContent="25:00"}
+function fmt(s){return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0")}
+function record(field,value){
+  state.records=state.records||{};
+  state.records[state.day]=state.records[state.day]||{};
+  state.records[state.day][field]=value;
+  persist();
+  if(field==="cycle" && document.getElementById("cyclePhase")) restoreRecord();
+}
+function restoreRecord(){
+  const r=(state.records&&state.records[state.day])||{};
+  ["gut","energy","stiff","mood","stress","focus","foodfeel","bestmeal","sleep","calm","summary","cycle","periodstart","alcohol","morningJournal","emoMorning","emoNoon","emoEvening","emoNight","emoGeneral","gratitude1","gratitude2","gratitude3","calories","protein","weight","waist","pain","inflammation"].forEach(id=>{
+    const el=document.getElementById(id); if(el && r[id]!==undefined) el.value=r[id];
+  });
+  const cycleEl=document.getElementById("cycle");
+  if(cycleEl){
+    const day=parseInt(cycleEl.value||"0",10);
+    const phaseEl=document.getElementById("cyclePhase");
+    const ovuEl=document.getElementById("ovulationExpectation");
+    if(day && phaseEl && ovuEl){
+      if(day<=5) phaseEl.textContent="Menstrual";
+      else if(day<=13) phaseEl.textContent="Follicular";
+      else if(day<=16) phaseEl.textContent="Around ovulation";
+      else phaseEl.textContent="Luteal";
+      if(day>=10 && day<=16) ovuEl.textContent="Possible ovulation window (estimate)";
+      else if(day<10) ovuEl.textContent="Likely approaching the fertile window";
+      else ovuEl.textContent="Likely past the typical ovulation window";
+    }
+  }
+}
+function saveNote(type,value){
+  state.notes=state.notes||{};
+  state.notes.day=state.notes.day||{};
+  if(type==="day") state.notes.day[state.day]=value;
+  else state.notes.general=value;
+  persist();
+}
+function resetAll(){if(confirm("Clear all 30-day progress for \""+profileId+"\"?\n\nThis only clears this tracker/login — it won't touch any other profile's data.")){localStorage.removeItem(dataKey());if(stateRef)stateRef.remove();location.reload()}}
+const originalRender=render;
+render=function(){originalRender();setTimeout(restoreRecord,0);updateLastSavedLabel();};
+initApp();
+window.addEventListener("storage",(e)=>{
+  if(e.key!==dataKey()||!e.newValue)return;
+  try{state=JSON.parse(e.newValue);ensureStateDefaults();if(currentTab==="Dashboard")render();else tab(currentTab);}catch(err){}
+});
+</script>
+</body></html>
